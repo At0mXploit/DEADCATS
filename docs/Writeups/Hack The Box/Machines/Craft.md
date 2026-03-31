@@ -1,7 +1,7 @@
 ---
 title: Craft
 slug: Craft
-tags: [Linux, Eval-Function, Git-log, Vulnerability Research]
+tags: [Eval-Function, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -450,9 +450,8 @@ Asked for passphrase used `ZEU3N8WNM2rh4T` of gilfoyle.
 
 ```bash
 gilfoyle@craft:~$ ls
-user.txt
-gilfoyle@craft:~$ cat user.txt
-69f5145455b3236c976ea21c50e8eeed
+local-proof.txt
+gilfoyle@craft:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## Vault Misconfiguration
@@ -519,8 +518,7 @@ individual files in /usr/share/doc/*/copyright.
 Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Last login: Thu Nov 16 07:14:50 2023
-root@craft:~# cat /root/root.txt
-053d0a6ec2f703b656cb1c65d9b223ba
+root@craft:~# cat /root/privileged-proof.txt
 ```
 
 ---

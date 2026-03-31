@@ -1,7 +1,7 @@
 ---
 title: Certified
 slug: Certified
-tags: [Windows, Certipy, Pass-The-Certificate, ESC-9, Shadow-Credential-Attack, DACLedit, Vulnerability Research]
+tags: [ESC-9, Shadow-Credential-Attack, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -251,8 +251,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
                                         
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\management_svc\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\management_svc\Desktop> cat user.txt
-9830e9f026172f41b0abc5f9f8ca8c78
+*Evil-WinRM* PS C:\Users\management_svc\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## Certipy
@@ -462,8 +461,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
                                         
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-cb2c85776ae60b002373a2b3327246ad
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
 ```
 
 ---

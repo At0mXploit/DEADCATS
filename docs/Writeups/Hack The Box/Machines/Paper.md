@@ -1,7 +1,7 @@
 ---
 title: Paper
 slug: Paper
-tags: [Linux, CVE-2021-3560, Polkit, WPscan, Vulnerability Research]
+tags: [CVE-2021-3560, Polkit, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -199,7 +199,7 @@ We see `dwight` it must be in this directory so tried command injection.
 
 ![](/img/htb-machines/paper8.png)
 
-I saw `user.txt` and folder called `hubot`.
+I saw `local-proof.txt` and folder called `hubot`.
 
 `list ../../dwight/hubot`
 
@@ -225,9 +225,8 @@ Activate the web console with: systemctl enable --now cockpit.socket
 
 Last login: Tue Feb  1 09:14:33 2022 from 10.10.14.23
 [dwight@paper ~]$ ls
-bot_restart.sh  hubot  sales  user.txt
-[dwight@paper ~]$ cat user.txt
-40dd09fff014acc1e7491571c6d73beb
+bot_restart.sh  hubot  sales  local-proof.txt
+[dwight@paper ~]$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -270,8 +269,7 @@ bash: cannot set terminal process group (6947): Inappropriate ioctl for device
 bash: no job control in this shell
 [root@paper tmp]# whoami
 root
-[root@paper tmp]# cat /root/root.txt 
-700448ed640570353686659c8b7c2f7d
+[root@paper tmp]# cat /root/privileged-proof.txt 
 ```
 
 ---

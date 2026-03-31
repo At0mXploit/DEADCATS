@@ -1,7 +1,7 @@
 ---
 title: Outbound
 slug: Outbound
-tags: [Linux, CVE-2025-49113, CVE-2025-27591, DES-Decryption, Below, Vulnerability Research]
+tags: [CVE-2025-49113, CVE-2025-27591, DES-Decryption, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -321,9 +321,8 @@ Tyler
 jacob@10.10.11.77 password: gY4Wr3a1evp4
 
 jacob@outbound:~$ ls 
-aaa  snapshot_01752431491_01752431491.xLzW52  user.txt
-jacob@outbound:~$ cat user.txt
-7061337cb6480d9ef509f4c2c4d91f86
+aaa  snapshot_01752431491_01752431491.xLzW52  local-proof.txt
+jacob@outbound:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## CVE-2025-27591
@@ -413,8 +412,7 @@ jacob@outbound:~$ ./exploit.sh
 Password: 
 haxor@outbound:/home/jacob# whoami
 haxor
-haxor@outbound:/home/jacob# cat /root/root.txt
-a82468d7732042fa80c26def26722f12       
+haxor@outbound:/home/jacob# cat /root/privileged-proof.txt
 ```
 ## Workarounds
 

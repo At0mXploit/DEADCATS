@@ -1,7 +1,7 @@
 ---
 title: Sweep
 slug: Sweep
-tags: [Windows, SSH-Honeypot, SharpLansweeperDecrypt, LanSweeper, Vulnerability Research]
+tags: [SSH-Honeypot, SharpLansweeperDecrypt, LanSweeper, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -292,8 +292,7 @@ Warning: Remote path completions is disabled due to ruby limitation: quoting_det
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\svc_inventory_lnx\Documents> cat c:\user.txt
-d2d89a58c454428461b1c7b2547f9165
+*Evil-WinRM* PS C:\Users\svc_inventory_lnx\Documents> cat c:\local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -429,8 +428,7 @@ Warning: Remote path completions is disabled due to ruby limitation: quoting_det
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\svc_inventory_win\Documents> cat C:\Users\Administrator\Desktop\root.txt
-71770ae0f007e2aed64425728977cc65
+*Evil-WinRM* PS C:\Users\svc_inventory_win\Documents> cat C:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

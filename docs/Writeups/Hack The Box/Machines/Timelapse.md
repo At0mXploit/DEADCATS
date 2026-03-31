@@ -1,7 +1,7 @@
 ---
 title: Timelapse
 slug: Timelapse
-tags: [PFX, OpenSSL, LAPS_Reader, Vulnerability Research]
+tags: [PFX, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -165,8 +165,7 @@ $ evil-winrm -i 10.129.222.65 -k time-decrypted.key -S -c time.crt
 
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\legacyy\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\legacyy\Desktop> cat user.txt
-82f631d643c45fda8ca18158e5bf160d
+*Evil-WinRM* PS C:\Users\legacyy\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -335,8 +334,7 @@ d-r---         3/3/2022  10:45 PM                Searches
 d-r---         3/3/2022  10:45 PM                Videos
 
 *Evil-WinRM* PS C:\Users\TRX> cd Desktop
-*Evil-WinRM* PS C:\Users\TRX\Desktop> cat root.txt
-8bec007e413aec606ccc080ac0e533da
+*Evil-WinRM* PS C:\Users\TRX\Desktop> cat privileged-proof.txt
 ```
 
 ---

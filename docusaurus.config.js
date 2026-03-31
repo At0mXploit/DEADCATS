@@ -123,6 +123,14 @@ const config = {
                 label: 'P0u',
                 href: 'https://nidanpoudel.com.np/',
               },
+              {
+                label: 'Ebi',
+                href: 'https://ctftime.org/team/367609',
+              },
+              {
+                label: '4w4647',
+                href: 'https://ctftime.org/team/367609',
+              },
             ],
           },
 

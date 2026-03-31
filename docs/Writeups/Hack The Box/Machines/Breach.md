@@ -1,7 +1,7 @@
 ---
 title: Breach
 slug: Breach
-tags: [Windows, GodPotato, SilverTicket, NTLM_Theft, Vulnerability Research]
+tags: [GodPotato, SilverTicket, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -434,12 +434,10 @@ Install the latest PowerShell for new features and improvements! https://aka.ms/
 PS C:\Users\Public> whoami
 whoami
 nt authority\system
-PS C:\Users\Public> type C:\Users\Administrator\Desktop\root.txt
-type C:\Users\Administrator\Desktop\root.txt
-fc98f418f94f8cdb9a30ef026fe64345
-PS C:\Users\Public> type C:\share\transfer\julia.wong\user.txt
-type C:\share\transfer\julia.wong\user.txt
-55d33e52bc5fa7a687b9f0dcfa103dda
+PS C:\Users\Public> type C:\Users\Administrator\Desktop\privileged-proof.txt
+type C:\Users\Administrator\Desktop\privileged-proof.txt
+PS C:\Users\Public> type C:\share\transfer\julia.wong\local-proof.txt
+type C:\share\transfer\julia.wong\local-proof.txt
 ```
 
 ---

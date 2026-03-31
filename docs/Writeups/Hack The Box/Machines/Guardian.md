@@ -1,7 +1,7 @@
 ---
 title: Guardian
 slug: Guardian
-tags: [Linux, IDOR, Ghost, XSS, PHP-Wrapper-Abuse, CSRF, PHP-Filter-Chain, Apache2CTL, Vulnerability Research]
+tags: [IDOR, XSS, PHP-Wrapper-Abuse, CSRF, PHP-Filter-Chain, Apache2CTL, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -602,10 +602,9 @@ jamil@guardian:/var/www/portal.guardian.htb/config$ cd /home/jamil
 cd /home/jamil
 jamil@guardian:~$ ls
 ls
-user.txt
-jamil@guardian:~$ cat user.txt
-cat user.txt
-bffecd3e3559ff143b2cd5a7e222d561
+local-proof.txt
+jamil@guardian:~$ cat local-proof.txt
+cat local-proof.txt
 ```
 
 SSH to `jamil`.
@@ -779,9 +778,8 @@ whoami
 root
 root@guardian:/etc/apache2# cd /root
 cd /root
-root@guardian:/root# cat root.txt
-cat root.txt
-676e04296e861d30bb6e601034cc10d8
+root@guardian:/root# cat privileged-proof.txt
+cat privileged-proof.txt
 ```
 
 ---

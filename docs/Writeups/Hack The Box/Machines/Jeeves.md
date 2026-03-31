@@ -1,7 +1,7 @@
 ---
 title: Jeeves
 slug: Jeeves
-tags: [Windows, Jenkis, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -151,13 +151,12 @@ dir
 
 11/03/2017  11:19 PM    <DIR>          .
 11/03/2017  11:19 PM    <DIR>          ..
-11/03/2017  11:22 PM                32 user.txt
+11/03/2017  11:22 PM                32 local-proof.txt
                1 File(s)             32 bytes
                2 Dir(s)   2,670,313,472 bytes free
 
-c:\Users\kohsuke\Desktop>type user.txt
-type user.txt
-e3232272596fb47950d59c4cf1e7066a
+c:\Users\kohsuke\Desktop>type local-proof.txt
+type local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -320,7 +319,7 @@ c:\Users\Administrator\Desktop> dir /R
 11/08/2017  10:05 AM    <DIR>          .
 11/08/2017  10:05 AM    <DIR>          ..
 12/24/2017  03:51 AM                36 hm.txt
-                                    34 hm.txt:root.txt:$DATA
+                                    34 hm.txt:privileged-proof.txt:$DATA
 11/08/2017  10:05 AM               797 Windows 10 Update Assistant.lnk
                2 File(s)            833 bytes
                2 Dir(s)   2,669,625,344 bytes free
@@ -328,8 +327,7 @@ c:\Users\Administrator\Desktop> dir /R
 ```
 
 ```bash
-c:\Users\Administrator\Desktop> more < hm.txt:root.txt
-afbc5bd4b615a60648cec41c6ac92530
+c:\Users\Administrator\Desktop> more < hm.txt:privileged-proof.txt
 ```
 
 ---

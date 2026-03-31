@@ -1,7 +1,7 @@
 ---
 title: Nocturnal
 slug: Nocturnal
-tags: [Linux, Command-Injection, ISPConfig, Port-Forwarding, Vulnerability Research]
+tags: [Command-Injection, ISPConfig, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -242,9 +242,8 @@ To check for new updates run: sudo apt update
 
 Last login: Wed Jun 11 11:51:38 2025 from 10.10.14.119
 tobias@nocturnal:~$ ls
-user.txt
-tobias@nocturnal:~$ cat user.txt
-cebd44bfb02f267ae5049b89579addcf
+local-proof.txt
+tobias@nocturnal:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -305,11 +304,10 @@ tobias@10.10.11.64's password:
 
 ispconfig-shell# whoami
 
-rootispconfig-shell# sudo find / -type f -name "root.txt" 2>/dev/null
-/root/root.txt
+rootispconfig-shell# sudo find / -type f -name "privileged-proof.txt" 2>/dev/null
+/root/privileged-proof.txt
 
-ispconfig-shell# cat /root/root.txt
-fa67fb8d17f33dc4c3ffde99b31db8b0
+ispconfig-shell# cat /root/privileged-proof.txt
 ```
 
 ---

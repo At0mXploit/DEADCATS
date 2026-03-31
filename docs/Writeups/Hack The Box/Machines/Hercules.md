@@ -1,13 +1,13 @@
 ---
 title: Hercules
 slug: Hercules
-tags: [Windows, Timeroasting, Kerbrute, LDAP-Injection, LDAPSearch, Enum4Linux, LFI, S4U2Self, winrmexec, ESC-3, Responder, ODT, Bloodhound, BloodyAD, Certipy, Powerview, Shadow-Credential-Attack, ADCS, GetST, impacket-changepasswd, GetTGT, impacket-getST, impacket-describeTicket, Vulnerability Research]
+tags: [Timeroasting, LDAP-Injection, LFI, S4U2Self, winrmexec, ESC-3, BloodyAD, Shadow-Credential-Attack, ADCS, Vulnerability Research]
 ---
 ## Executive Summary
 
 This note documents the validated attack path and vulnerability chain identified on the Hercules target. The material is presented as a research-style case study rather than platform-specific walkthrough content.
 
-The root flag can be found in the non-default location, `C:\Users\Admin\Desktop`.
+The privileged-access proof can be found in the non-default location, `C:\Users\Admin\Desktop`.
 ## Initial Surface
 ### Network Enumeration
 
@@ -1816,10 +1816,9 @@ PS C:\Users\auditor\Desktop> ls
 
 Mode                 LastWriteTime         Length Name                                                                  
 ----                 -------------         ------ ----                                                                  
--ar---        10/20/2025   2:36 AM             34 user.txt                                                              
+-ar---        10/20/2025   2:36 AM             34 local-proof.txt                                                              
 
-PS C:\Users\auditor\Desktop> cat user.txt
-b5c77131749e61ae9d97f9d269c435f1
+PS C:\Users\auditor\Desktop> cat local-proof.txt
 ```
 # Privilege  Escalation
 
@@ -3065,10 +3064,9 @@ PS C:\Users\Admin\Desktop> ls
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
--ar---        10/20/2025  11:54 PM             34 root.txt
+-ar---        10/20/2025  11:54 PM             34 privileged-proof.txt
 
-PS C:\Users\Admin\Desktop> cat root.txt
-53642c72d41e65e695d706ff56ab4e2a
+PS C:\Users\Admin\Desktop> cat privileged-proof.txt
 ```
 
 ---

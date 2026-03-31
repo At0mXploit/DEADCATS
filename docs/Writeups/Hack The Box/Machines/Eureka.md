@@ -1,7 +1,7 @@
 ---
 title: Eureka
 slug: Eureka
-tags: [Linux, Eureka, Nuclei, Heapdump, Spring-boot, Acutator, Vulnerability Research]
+tags: [Heapdump, Spring-boot, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -485,8 +485,7 @@ We can see `miranda-wise` so it does exist. Now SSH to her.
 ❯ ssh miranda-wise@furni.htb
 miranda-wise@furni.htb's password: IL!veT0Be&BeT0L0ve
 
-miranda-wise@eureka:~$ cat user.txt
-206184839daa5357821b464e72226085
+miranda-wise@eureka:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -713,8 +712,7 @@ systemd-private-30c5cf1f93b5497a99e2442e05769f77-upower.service-bl7Yqi          
 miranda-wise@eureka:/tmp$ ./bash -p
 bash-5.0# id
 uid=1001(miranda-wise) gid=1002(miranda-wise) euid=0(root) groups=1002(miranda-wise),1003(developers)
-bash-5.0# cat /root/root.txt
-a00136880d4c82e22869cdc67d3d777c
+bash-5.0# cat /root/privileged-proof.txt
 ```
 
 ---

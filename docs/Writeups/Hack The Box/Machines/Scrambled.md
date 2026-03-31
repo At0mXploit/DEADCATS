@@ -1,7 +1,7 @@
 ---
 title: Scrambled
 slug: Scrambled
-tags: [Windows, Kerbrute, Insecure-Deserialization, ILSpy, DotNet, Kerberoasting, SilverTicket, Ysoserial, Vulnerability Research]
+tags: [Insecure-Deserialization, ILSpy, DotNet, Kerberoasting, SilverTicket, Ysoserial, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -440,10 +440,9 @@ PS C:\Users\miscsvc\Desktop> ls
 
 Mode                LastWriteTime         Length Name                                              
 ----                -------------         ------ ----                                              
--ar---       18/10/2025     17:35             34 user.txt                                          
+-ar---       18/10/2025     17:35             34 local-proof.txt                                          
 
-PS C:\Users\miscsvc\Desktop> cat user.txt
-8a806d91ba1610d87474c2837ff73dbf
+PS C:\Users\miscsvc\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -936,8 +935,7 @@ connect to [10.10.14.122] from (UNKNOWN) [10.129.161.93] 60554
 
 PS C:\Windows\system32> whoami
 nt authority\system
-PS C:\Windows\system32> cat c:\users\administrator\desktop\root.txt
-992a6ecec03084740bc01e8c14978841
+PS C:\Windows\system32> cat c:\users\administrator\desktop\privileged-proof.txt
 ```
 
 ---

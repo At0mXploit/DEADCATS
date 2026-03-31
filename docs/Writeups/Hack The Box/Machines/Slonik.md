@@ -1,7 +1,7 @@
 ---
 title: Slonik
 slug: Slonik
-tags: [Linux, Penelope, PostgresSQL, NFS, Vulnerability Research]
+tags: [NFS, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -272,8 +272,7 @@ COPY 0
 [+] Logging to <local-path> 📜
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 postgres@slonik:/var/lib/postgresql/14/main$ cd /var/lib/postgresql
-postgres@slonik:/var/lib/postgresql$ cat user.txt
-2b5f3f93ef223555f4a5a8b29393fe9d
+postgres@slonik:/var/lib/postgresql$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -373,8 +372,7 @@ drwx------  2 root root 4.0K Jan  6 06:48 pg_xact
 
 ```bash
 postgres@slonik:/var/lib/postgresql/14/main$ /opt/backups/current/bash -p
-bash-5.1# cat /root/root.txt
-2cb582cd567bfd996cdb742eb1d544de
+bash-5.1# cat /root/privileged-proof.txt
 ```
 
 ---

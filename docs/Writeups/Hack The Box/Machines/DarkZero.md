@@ -1,7 +1,7 @@
 ---
 title: Dark Zero
 slug: Dark-Zero
-tags: [Windows, cve_2024_30088_authz_basep, Vulnerability Research]
+tags: [cve_2024_30088_authz_basep, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -222,7 +222,7 @@ PS C:\Users> hostname
 DC02
 ```
 
-We need to pivot back to DC01 where user flag might be.
+We need to pivot back to DC01 where local-access proof might be.
 
 ```bash
 PS C:\Users> ping DC01.darkzero.htb
@@ -586,9 +586,8 @@ PS C:\Users> cd Administrator
 cd Administrator
 PS C:\Users\Administrator> cd Desktop
 cd Desktop
-PS C:\Users\Administrator\Desktop> cat user.txt
-cat user.txt
-61d31fb5bbd5fba0998f15969d786834
+PS C:\Users\Administrator\Desktop> cat local-proof.txt
+cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -821,10 +820,9 @@ Install the latest PowerShell for new features and improvements! https://aka.ms/
 
 PS C:\Windows\System32>
 
-cat c:\Users\Administrator\Desktop\root.txt
+cat c:\Users\Administrator\Desktop\privileged-proof.txt
 
-PS C:\Windows\System32> cat c:\Users\Administrator\Desktop\root.txt
-1ac915ee60f9a73d4f4ccff20ed1bdd9
+PS C:\Windows\System32> cat c:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

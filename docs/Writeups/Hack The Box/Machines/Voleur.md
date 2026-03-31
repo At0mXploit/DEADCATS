@@ -1,7 +1,7 @@
 ---
 title: Voleur
 slug: Voleur
-tags: [Windows, Kerberoasting, Bloodhound, TargetedKerberoast, Secrets-Dump, DPAPI, Vulnerability Research]
+tags: [Kerberoasting, DPAPI, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -330,10 +330,9 @@ Info: Establishing connection to remote endpoint
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 -a----         1/29/2025   7:07 AM           2312 Microsoft Edge.lnk
--ar---          9/7/2025   1:39 AM             34 user.txt
+-ar---          9/7/2025   1:39 AM             34 local-proof.txt
 
-*Evil-WinRM* PS C:\Users\svc_winrm\Desktop> cat user.txt
-4f314d4948d88dce2d23cb32f6063bf1
+*Evil-WinRM* PS C:\Users\svc_winrm\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -365,7 +364,7 @@ Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 -a----         1/29/2025   7:07 AM           2312 Microsoft Edge.lnk
 -a----          9/8/2025   7:07 AM          51712 RunasCs.exe
--ar---          9/7/2025   1:39 AM             34 user.txt
+-ar---          9/7/2025   1:39 AM             34 local-proof.txt
 ```
 
 ```powershell
@@ -827,10 +826,9 @@ Info: Establishing connection to remote endpoint
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 -a----         1/29/2025   1:12 AM           2308 Microsoft Edge.lnk
--ar---          9/7/2025   1:39 AM             34 root.txt
+-ar---          9/7/2025   1:39 AM             34 privileged-proof.txt
 
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-25d93a34d04bb5f2fe34baf3639e424a
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
 ```
 
 ---

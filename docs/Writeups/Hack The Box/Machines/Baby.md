@@ -1,7 +1,7 @@
 ---
 title: Baby
 slug: Baby
-tags: [Windows, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -178,8 +178,7 @@ Warning: Remote path completions is disabled due to ruby limitation: undefined m
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
 
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\Caroline.Robinson\Documents> cat ..\Desktop\user.txt
-e573cf25510907d917d388c8545ddf24
+*Evil-WinRM* PS C:\Users\Caroline.Robinson\Documents> cat ..\Desktop\local-proof.txt
 ```
 ## Privilege Escalation Path
 

@@ -1,7 +1,7 @@
 ---
 title: Planning
 slug: Planning
-tags: [Linux, Port-Forwarding, Grafana, CVE-2024-9264, Vulnerability Research]
+tags: [CVE-2024-9264, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -113,9 +113,8 @@ PWD=/
 
 ```bash
 enzo@planning:~$ ls
-user.txt
-enzo@planning:~$ cat user.txt
-64c78ff81b1564e6e2ff228e53be1d38
+local-proof.txt
+enzo@planning:~$ cat local-proof.txt
 enzo@planning:~$ 
 ```
 ## Privilege Escalation Path
@@ -191,8 +190,8 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 
 ```bash
 enzo@planning:~$ ls
-linpeas.sh  pspy64  root.txt  user.txt
-enzo@planning:~$ cat root.txt
+linpeas.sh  pspy64  privileged-proof.txt  local-proof.txt
+enzo@planning:~$ cat privileged-proof.txt
 # Fuck Yeah
 ```
 

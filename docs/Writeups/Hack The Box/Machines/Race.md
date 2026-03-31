@@ -1,7 +1,7 @@
 ---
 title: Race
 slug: Race
-tags: [Linux, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 

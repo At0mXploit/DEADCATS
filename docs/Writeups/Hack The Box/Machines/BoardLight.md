@@ -1,7 +1,7 @@
 ---
 title: Board Light
 slug: Board-Light
-tags: [Linux, CVE-2023-30253, Dolibarr, CVE-2022-37706, Enlightment, Vulnerability Research]
+tags: [CVE-2023-30253, Dolibarr, CVE-2022-37706, Enlightment, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -481,8 +481,7 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-larissa@boardlight:~$ cat user.txt
-ff40c7c8c5211e150f643e442c8da664
+larissa@boardlight:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -547,8 +546,7 @@ CVE-2022-37706
 [+] Trying to pop a root shell!
 [+] Enjoy the root shell :)
 mount: /dev/../tmp/: can't find in /etc/fstab.
-# cat /root/root.txt
-a481623b0b2c0ac0ac3c39555af63a2d
+# cat /root/privileged-proof.txt
 ```
 
 ---

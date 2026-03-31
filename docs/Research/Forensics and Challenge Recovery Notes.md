@@ -12,7 +12,7 @@ This page collects selected research notes centered on packet capture analysis, 
 ### Summary
 
 - Challenge file: `1 GB` PCAP
-- Final flag: `EH4X{pc@p5_@re_of+en_mo5+1y_noi5e}`
+- Recovered output: `[redacted output]`
 
 ### Initial Scanning
 
@@ -23,7 +23,7 @@ Initial surface scanning with tools such as `strings` showed large amounts of no
 Using `capinfos` showed that the large capture was effectively built from three merged sources:
 
 - `massive.pcap`: bulk random payloads used to inflate file size
-- `decoy_trap.pcap`: contained the fake flag `EHAX{ck}`
+- `decoy_trap.pcap`: contained the fake output token `[redacted output]`
 - `covert_timing_2.pcap`: the meaningful stream, where packet timing carried the signal
 
 The main point was that the file size itself was part of the misdirection.
@@ -75,13 +75,13 @@ for i in range(0, len(binary) - 7, 8):
 print(''.join(chars))
 ```
 
-The recovered output was:
+Recovered output:
 
 `ÅH4X{pc@p5_@re_of+en_mo5+1y_noi5e}`
 
-After correcting the leading character to match the expected flag format, the final result was:
+After correcting the leading character to match the expected output format, the final result was:
 
-`EH4X{pc@p5_@re_of+en_mo5+1y_noi5e}`
+`[redacted output]`
 
 ## Final Boss
 
@@ -91,7 +91,7 @@ After correcting the leading character to match the expected flag format, the fi
 
 ### Goal
 
-Recover the complete flag from a USB packet capture.
+Recover the complete hidden output from a USB packet capture.
 
 ### Initial Inspection
 
@@ -122,7 +122,7 @@ Those values map to base-4 digits:
 - `0x40 -> 1`
 - `0x80 -> 2`
 
-Grouping the digits into bytes recovers the first flag fragment:
+Grouping the digits into bytes recovers the first recovered token fragment:
 
 `CodeVinci{17_w45_V3rY_d1ff1cUL7_t0_b34t_7H3_F1N4l_8055_`
 
@@ -260,10 +260,10 @@ def decode_stage2():
 def main():
     stage1 = decode_stage1()
     stage2 = decode_stage2()
-    flag = stage1 + stage2 + "}"
+    recovered = stage1 + stage2 + "}"
     print("Stage 1:", stage1)
     print("Stage 2:", stage2)
-    print("Flag:", flag)
+    print("Recovered value:", recovered)
 
 
 if __name__ == "__main__":
@@ -278,7 +278,7 @@ File provided:
 
 - `controller_fw.bin`
 
-The prompt states that a CNC machine was engraving something important before power loss. The task is to recover what it was engraving and derive the flag.
+The prompt states that a CNC machine was engraving something important before power loss. The task is to recover what it was engraving and derive the final protected value.
 
 ### Initial Triage
 
@@ -332,21 +332,21 @@ Reconstructing the toolpath shows that the machine was engraving:
 
 `f'GS`
 
-### Final Flag
+### Final Value
 
-The recovery note states that if the engraving is `f'XYZ...`, the flag format is:
+The recovery note states that if the engraving is `f'XYZ...`, the output format is:
 
-`apoorvctf{f'XYZ...}`
+`[redacted output]`
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{f'GS}`
+`[redacted output]`
 
 ## Beneath the Armor
 
 ### Research Theme
 
-This image-analysis task hides a flag inside a PNG file using a modified LSB steganography scheme.
+This image-analysis task hides a protected string inside a PNG file using a modified LSB steganography scheme.
 
 ### Why Standard LSB Fails
 
@@ -404,14 +404,14 @@ for i in range(0, len(bits) - 7, 8):
     output.append(byte)
 
 message = bytes(output)
-start = message.find(b'apoorvctf{')
+start = message.find(b'<token-prefix>{')
 end = message.find(b'}', start) + 1
 print(message[start:end].decode())
 ```
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{m0dul4r_4r17hm371c_15_fun_y34h}`
+`[redacted output]`
 
 ### Key Takeaway
 

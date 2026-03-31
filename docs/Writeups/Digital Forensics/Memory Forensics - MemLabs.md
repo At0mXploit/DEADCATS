@@ -1,7 +1,7 @@
 ---
-title: Memory Forensics - MemLabs
-slug: Memory-Forensics-MemLabs
-tags: [Digital Forensics, Memory Forensics, Volatility, MemLabs, CTFs, Writeups, Notes]
+title: Memory Forensics Research Notes
+slug: /Memory-Forensics-MemLabs
+tags: [Digital Forensics, Memory Analysis, Volatility, Incident Response, Research Notes]
 ---
 
 # Memory Forensics
@@ -10,7 +10,7 @@ tags: [Digital Forensics, Memory Forensics, Volatility, MemLabs, CTFs, Writeups,
 
 An application is like during a cybercrime raid, investigators capture the suspect’s laptop without powering it down. A memory dump is taken and analyzed using **Volatility**. In RAM, they uncover a fileless trojan running in a legitimate process, hidden from the disk. They recover unencrypted chat logs, session tokens, and private keys for a crypto wallet. None of this data existed on the hard drive it all lived in memory. This crucial evidence links the suspect to a **real-time data theft operation**.
 
-I am doing **MemLabs** Labs, [MemLabs](https://github.com/stuxnet999/MemLabs) is an educational, introductory set of CTF-styled challenges which is aimed to encourage students, security researchers and also CTF players to get started with the field of **Memory Forensics**. We will find 3 flags in a particular lab, Concatenate all the flags like this: `flag{stage1_is_n0w_d0n3} flag{stage2_is_n0w_d0n3} flag{stage3_is_n0w_d0n3}` More more information and labs checkout their [Github](https://github.com/stuxnet999/MemLabs). There are total of 7 Labs from easy to hard, I am trying to learn myself.
+This page documents a set of **MemLabs** investigations, adapted into a research-note format. [MemLabs](https://github.com/stuxnet999/MemLabs) is an educational series designed to introduce students and practitioners to **memory forensics** through guided scenarios. In several labs the workflow recovers multiple artifacts that need to be combined into a final secret string. More information and the original datasets are available in the project [repository](https://github.com/stuxnet999/MemLabs).
 # Volatility Installation
 
 **Volatility** is a powerful **open-source memory forensics tool** used to analyze RAM dumps and extract digital evidence from volatile memory. Since MemLabs challenges are old, it is best to use `Volatility2.6` with it. Since volatility 2 have more plugins that are not yet to import to volatility 3 so we will have no choice but to use volatility 2.
@@ -94,7 +94,7 @@ My friend John is an "environmental" activist and a humanitarian. He hated the i
 
 Challenge file: [Google drive](https://drive.google.com/file/d/1MjMGRiPzweCOdikO3DTaVfbdBK5kyynT/view)
 
-This is a sample challenge, it will only have 1 flag for this.
+This is a sample scenario and yields a single target artifact.
 ## Solution
 
 We will need to always look at description because Forensics is vast field and we will most of times going to another direction or rabbit hole. We can see the word `environmental` is quoted which could mean something about environment variables.
@@ -232,7 +232,7 @@ It shows Thanos environment variable as `xor and password` which could possibly 
 
 ![lab_0_2.png](/img/lab_0_2.png)
 
-As we can see we got few or half part of flag `1_4m_b3tt3r}`, We need to find another part of flag. In hint we also had `password`, Maybe we have to dump passwords using plugin `hashdump`.
+As we can see we recovered only a partial secret, `1_4m_b3tt3r}`. We still need the missing segment. The hint also referenced `password`, so the next step is to inspect stored credential material with the `hashdump` plugin.
 
 We know that password hashes (not the plaintext passwords) are stored in the **SAM (Security Account Manager)** file on disk:
 
@@ -272,7 +272,7 @@ We can find which plugin does what in Volatility, Read this [Command Reference](
 
 My sister's computer crashed. We were very fortunate to recover this memory dump. Your job is get all her important files from the system. From what we remember, we suddenly saw a black window pop up with some thing being executed. When the crash happened, she was trying to draw something. Thats all we remember from the time of crash.
 
-**Note**: This challenge is composed of 3 flags.
+**Note**: This scenario is composed of three recoverable artifacts.
 
 **Challenge file**: [MemLabs_Lab1](https://mega.nz/#!6l4BhKIb!l8ATZoliB_ULlvlkESwkPiXAETJEF7p91Gf9CWuQI70)
 
@@ -399,7 +399,7 @@ Press any key to continue . . .
 
 ```bash
 ❯ echo ZmxhZ3t0aDFzXzFzX3RoM18xc3Rfc3Q0ZzMhIX0= | base64 -d
-flag{th1s_1s_th3_1st_st4g3!!}
+`[redacted output]`
 ```
 
 We got first Flag.
@@ -438,9 +438,9 @@ After trying and scrolling down we got text that's upside down at:
 - `Width`: `3280`
 - `Height`: `1000`
 
-If we open it and flip it vertically we will get our second flag as `flag{Good_Boy_good_girl}`.
+If we open it and flip it vertically we recover the second segment: `[redacted output]`.
 
-Now for last flag, we see `Winrar.exe` which is something interesting process. We know there are two types of interface: **Command-Line Interface (CLI)** and **Graphical User Interface (GUI)**. Every GUI is essentially running CLI in backend. We can use `cmdline` plugin to see what arguments were supplied to that process.
+For the final segment, `Winrar.exe` stands out as an interesting process. We know there are two types of interface: **Command-Line Interface (CLI)** and **Graphical User Interface (GUI)**. Every GUI is essentially running CLI in backend. We can use `cmdline` plugin to see what arguments were supplied to that process.
 
 ```bash
 ❯ /usr/bin/volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64 cmdline
@@ -519,13 +519,13 @@ Extracting  flag3.png                                                 OK
 All OK
 ```
 
-View `flag3.png` and we get flag `flag{w3ll_3rd_stage_was_easy}`.
+View `flag3.png` and we recover the final output `[redacted output]`.
 # MemLabs Lab 2 - Beginner's Luck
 ## **Challenge description**
 
 One of the clients of our company, lost the access to his system due to an unknown error. He is supposedly a very popular "environmental" activist. As a part of the investigation, he told us that his go to applications are browsers, his password managers etc. We hope that you can dig into this memory dump and find his important stuff and give it back to us.
 
-**Note**: This challenge is composed of 3 flags.
+**Note**: This scenario is composed of three recoverable artifacts.
 
 **Challenge file**: [MemLabs_Lab2](https://mega.nz/#!ChoDHaja!1XvuQd49c7-7kgJvPXIEAst-NXi8L3ggwienE1uoZTk)
 
@@ -630,10 +630,10 @@ We can use environment variables hint to find something interesting now. It will
 
 ```bash
 ❯ echo ZmxhZ3t3M2xjMG0zX1QwXyRUNGczXyFfT2ZfTDRCXzJ9 | base64 -d
-flag{w3lc0m3_T0_$T4g3_!_Of_L4B_2}
+`[redacted output]`
 ```
 
-We got our first flag as `flag{w3lc0m3_T0_$T4g3_!_Of_L4B_2}`. But it doesn't have any connection with our password. We can now leave this environment variables now let's focus on password. We can check `clipboard` where usually copied text are stored in RAM.
+We recovered the first token as `[redacted output]`. But it doesn't have any connection with our password. We can now leave this environment variables now let's focus on password. We can check `clipboard` where usually copied text are stored in RAM.
 
 ```bash
 ❯ /usr/bin/volatility -f MemoryDump_Lab2.raw --profile=Win7SP1x64 clipboard
@@ -694,9 +694,9 @@ There is password written in small which is `P4SSw0rd_123`. Now lets open keepas
 
 ![lab_2_2.png](/img/lab_2_2.png)
 
-If we copy this `Flag` password from Recycle Bin, we will get our flag `flag{w0w_th1s_1s_Th3_SeC0nD_ST4g3_!!}`.
+If we copy this recovered password from the Recycle Bin, we can recover the final output `[redacted output]`.
 
-Lastly we need to check for that browser hint. We need to find something at `chrome.exe`. We can dump Chrome history using downloaded plugin. We will get bunch of links but we only want that can give us flag.
+Lastly we need to check the browser hint. We need to inspect activity around `chrome.exe`. We can dump Chrome history using the downloaded plugin. The result includes many links, but only one is relevant to the protected archive.
 
 ```bash
  ❯ /usr/bin/volatility --plugins=../volatility-plugins -f MemoryDump_Lab2.raw --profile=Win7SP1x64 chromehistory                      
@@ -721,10 +721,10 @@ Password is SHA1(stage-3-FLAG) from Lab-1. Password is in lowercase.
 Important.zip: Zip archive data, at least v2.0 to extract, compression method=AES Encrypted
 ```
 
-Its password protected and we got hint `Password is SHA1(stage-3-FLAG) from Lab-1. Password is in lowercase`. Third flag in Lab-1 was `flag{w3ll_3rd_stage_was_easy}`. Convert it to SHA-1.
+It is password protected and includes the hint `Password is SHA1(stage-3-FLAG) from Lab-1. Password is in lowercase`. The third recovered value from Lab 1 was `[redacted output]`. Convert it to SHA-1.
 
 ```bash
-❯ echo -n flag{w3ll_3rd_stage_was_easy} | sha1sum 
+❯ echo -n `[redacted output]` | sha1sum 
 6045dd90029719a039fd2d2ebcca718439dd100a  -
 ```
 
@@ -746,21 +746,21 @@ hidden.kdbx    Important.zip  MemoryDump_Lab2.raw
 Important.png  
 ```
 
-We can see we got `Important.png` which has flag.
+We can see we got `Important.png`, which contains the recovered secret.
 
 ![lab_2_3.png](/img/lab_2_3.png)
 
 
-`flag{oK_So_Now_St4g4_3_is_DoNE!!}`
+`[redacted output]`
 # MemLabs Lab 3 - The Evil's Den
 
 ## **Challenge Description**
 
 A malicious script encrypted a very secret piece of information I had on my system. Can you recover the information for me please?
 
-**Note-1**: This challenge is composed of only 1 flag. The flag split into 2 parts.
+**Note-1**: This scenario yields one secret split into two parts.
 
-**Note-2**: You'll need the first half of the flag to get the second.
+**Note-2**: You'll need the first recovered segment to get the second.
 
 You will need this additional tool to solve the challenge,
 
@@ -768,7 +768,7 @@ You will need this additional tool to solve the challenge,
 $ sudo apt install steghide
 ```
 
-The flag format for this lab is: `inctf{s0me_l33t_Str1ng}`
+The output format for this lab is: `[redacted output]`
 
 **Challenge file**: [MemLabs_Lab3](https://mega.nz/#!2ohlTAzL!1T5iGzhUWdn88zS1yrDJA06yUouZxC-VstzXFSRuzVg)
 ## Solution
@@ -933,10 +933,10 @@ if __name__ == "__main__":
 
 ```bash
 ❯ python3 decode.py
-inctf{0n3_h4lf
+`[redacted output]`
 ```
 
-We got first half of flag `inctf{0n3_h4lf` and from description that first flag is needed to get second flag. Also it said to use `steghide` which is only supports `.jpg`, `.jpeg`, `.bmp`  So we can search for this type of file from `filescan` plugin and try to find hidden things inside it.
+We got the first recovered segment, `[redacted output]`, and from the description we know it is needed to recover the second one. It also mentioned `steghide`, which only supports `.jpg`, `.jpeg`, and `.bmp`, so we can search for one of those files with the `filescan` plugin and inspect it for hidden data.
 
 ```bash
 ❯ /usr/bin/volatility -f MemoryDump_Lab3.raw --profile=Win7SP1x86_23418 filescan | grep -i "jpg\|jpeg\|bmp"
@@ -970,31 +970,31 @@ evilscript.py  MemoryDump_Lab3.raw
 
 ```bash
 ❯ steghide extract -sf suspision1.jpeg 
-Enter passphrase: inctf{0n3_h4lf
+Enter passphrase: `[redacted output]`
 wrote extracted data to "secret text".
 ```
 
-We used previous half flag as password and got `secret text` file.
+We used previous half output as password and got `secret text` file.
 
 ```bash
 ❯ cat 'secret text' 
 _1s_n0t_3n0ugh}
 ```
 
-We now have full flag as `inctf{0n3_h4lf_1s_n0t_3n0ugh}`
+We now have full output as `[redacted output]`
 # MemLabs Lab 4 - Obsession
 ## **Challenge Description**
 
 My system was recently compromised. The Hacker stole a lot of information but he also deleted a very important file of mine. I have no idea on how to recover it. The only evidence we have, at this point of time is this memory dump. Please help me.
 
-**Note**: This challenge is composed of only 1 flag.
+**Note**: This scenario yields a single recovered secret.
 
-The flag format for this lab is: `inctf{s0me_l33t_Str1ng}`
+The output format for this lab is: `[redacted output]`
 
 **Challenge file**: [MemLabs_Lab4](https://mega.nz/#!Tx41jC5K!ifdu9DUair0sHncj5QWImJovfxixcAY-gt72mCXmYrE)
 ## Solution
 
-It seems like in this challenge we need to recover a file. Till now we were finding files from RAM, cache but this time we will recover a file. This challenge is made to teach us how can we recover deleted file using volatility and our flag is also mostly in that recovered file.
+This scenario centers on recovering a deleted file. Up to this point we were mostly extracting artifacts already resident in RAM or cache, but here the investigation shifts toward file recovery from memory structures. The final secret is stored in that recovered file.
 
 ```bash
 ❯ /usr/bin/volatility -f MemoryDump_Lab4.raw imageinfo
@@ -1174,7 +1174,7 @@ $DATA
 0000000090: 64 20 77 6f 72 6b 20 3a 50                        d.work.:P
 ```
 
-And we got flag if you combine it `inctf{1_is_n0t_EQu4l_7o_2_bUt_th1s_m4ke_s3ns3}`. This weird format is made by author of challenge so that we cant directly grep from flag format our flag.
+Combining the recovered fragments yields `[redacted output]`. The unusual format appears to have been chosen to make simple string searches less effective.
 # MemLabs Lab 5 - Black Tuesday
 ## **Challenge Description**
 
@@ -1184,11 +1184,11 @@ We received this memory dump from our client recently. Someone accessed his syst
 
 Also, he noticed his most loved application that he always used crashed every time he ran it. Was it a virus?
 
-**Note-1**: This challenge is composed of 3 flags. If you think 2nd flag is the end, it isn't!! :P
+**Note-1**: This scenario contains three recovered artifacts. If the second looks final, it is not.
 
 **Note-2**: There was a small mistake when making this challenge. If you find any string which has the string "**_L4B_3_D0n3_!!**" in it, please change it to "**_L4B_5_D0n3_!!**" and then proceed.
 
-**Note-3**: You'll get the stage 2 flag only when you have the stage 1 flag.
+**Note-3**: Stage 2 depends on the value recovered in stage 1.
 
 **Challenge file**: [MemLabs_Lab5](https://mega.nz/#!Ps5ViIqZ!UQtKmUuKUcqqtt6elP_9OJtnAbpwwMD7lVKN1iWGoec)
 ## Solution
@@ -1311,10 +1311,10 @@ ZmxhZ3shIV93M0xMX2QwbjNfU3Q0ZzMtMV8wZl9MNEJfNV9EMG4zXyEhfQ.lnk
 
 ```bash
 ❯ echo ZmxhZ3shIV93M0xMX2QwbjNfU3Q0ZzMtMV8wZl9MNEJfNV9EMG4zXyEhfQ | base64 -d                    
-flag{!!_w3LL_d0n3_St4g3-1_0f_L4B_5_D0n3_!!}
+`[redacted output]`
 ```
 
- We got first flag `flag{!!_w3LL_d0n3_St4g3-1_0f_L4B_5_D0n3_!!}`. Now we can dump that `SW1wb3J0YW50.rar` file we found.
+We got the first recovered segment, `[redacted output]`. Now we can dump the `SW1wb3J0YW50.rar` file we found.
 
 ```bash
 ❯ /usr/bin/volatility -f MemoryDump_Lab5.raw --profile=Win7SP1x64 filescan | grep SW1wb3J0YW50.rar
@@ -1340,17 +1340,17 @@ UNRAR 7.00 freeware      Copyright (c) 1993-2024 Alexander Roshal
 
 Extracting from file.rar
 
-Enter password (will not be echoed) for Stage2.png: flag{!!_w3LL_d0n3_St4g3-1_0f_L4B_5_D0n3_!!}
+Enter password (will not be echoed) for Stage2.png: `[redacted output]`
 
 Extracting  Stage2.png                                                OK 
 All OK
 ```
 
-We used first flag as password as said in description and got `Stage2.png`.
+We used the first recovered segment as the password, as instructed in the scenario, and extracted `Stage2.png`.
 
 ![lab_5_2.png](/img/lab_5_2.png)
 
-Second flag is `flag{W1th_th1s_$taGe_2_1s_c0mPL3T3_!!}`. It says congratulation you completed but its fake as said in description there is also 3rd flag.
+The second recovered segment is `[redacted output]`. It claims the process is complete, but the scenario notes that a third artifact still remains.
 
 Last suspicious thing we have left is that `NOTEPAD.exe` which we can dump and do easy reverse engineering. We have to choose one `Notepad` on Videos directory.
 
@@ -1384,7 +1384,7 @@ We got 3 `.dat`, `.vacb`, `.img` files but we should choose `.dat` like before, 
 
 ![lab_5_3.png](/img/lab_5_3.png)
 
-We can see we have flag character by character that's why it can't be seen with simple strings.
+We can see the secret is laid out character by character, which is why it does not appear cleanly in simple string extraction.
 
 `bi0s{M3m_l4b5_OVeR_!}`
 # MemLabs Lab 6 - The Reckoning
@@ -1392,9 +1392,9 @@ We can see we have flag character by character that's why it can't be seen with 
 
 We received this memory dump from the Intelligence Bureau Department. They say this evidence might hold some secrets of the underworld gangster David Benjamin. This memory dump was taken from one of his workers whom the FBI busted earlier this week. Your job is to go through the memory dump and see if you can figure something out. FBI also says that David communicated with his workers via the internet so that might be a good place to start.
 
-**Note**: This challenge is composed of 1 flag split into 2 parts.
+**Note**: This scenario contains one secret split into two parts.
 
-The flag format for this lab is: `inctf{s0me_l33t_Str1ng}`s0me_l33t_Str1ng
+The output format for this lab is: `[redacted output]`s0me_l33t_Str1ng
 
 **Challenge file**: [MemLabs_Lab6](https://mega.nz/#!C0pjUKxI!LnedePAfsJvFgD-Uaa4-f1Tu0kl5bFDzW6Mn2Ng6pnM)
 ## Solution
@@ -1453,7 +1453,7 @@ Command line : "C:\Program Files\WinRAR\WinRAR.exe" "C:\Users\Jaffa\Desktop\pr0t
 <SNIP>
 ```
 
-This `flag.rar` is most interesting file among here so we can find address and dump it.
+This archive is the most interesting file here, so we can identify its memory address and dump it.
 
 ```bash
 ❯ /usr/bin/volatility -f MemoryDump_Lab6.raw --profile=Win7SP1x64 filescan | grep -i flag.rar
@@ -1552,7 +1552,7 @@ When we scroll down using that above command we will see this section which give
 
 ![lab_6_2.png](/img/lab_6_2.png)
 
-Now put this key in Mega site link `https://mega.nz/file/SrxQxYTQ`. We see `flag.png`. If we try to open it:
+Now put this key into the Mega link `https://mega.nz/file/SrxQxYTQ`. We see an image named `flag.png`. If we try to open it:
 
 ```bash
 ❯ eog flag_.png
@@ -1570,11 +1570,11 @@ IHDR Part was corrupted if we view in `hexedit` so all we need to do is to chang
 
 ![lab_6_4.png](/img/lab_6_4.png)
 
-As we can see I changed `69` to `49` and saved it. Now if we view we should be able to see flag.
+As we can see I changed `69` to `49` and saved it. Once viewed again, the image reveals the first segment.
 
 ![lab_6_5.png](/img/lab_6_5.png)
 
-First half of flag is `inctf{thi5_cH4LL3Ng3_!s_g0nn4_b3_?_`. Now we need to find second part.
+The first recovered segment is `[redacted output]`. Now we need to find the second part.
 
 ```bash
 ❯ unrar e flag.rar      
@@ -1587,7 +1587,7 @@ Extracting from flag.rar
 Enter password (will not be echoed) for flag2.png: 
 ```
 
-I tried first part of flag but it seem to be incorrect, So we need to manually find password. We can check environment variables using `envars` because this is the thing we haven't done till now.
+I first tried the recovered segment as the archive password, but it was incorrect. The next step is to inspect environment variables with `envars`, since that is one source we had not checked yet.
 
 ```bash
 ❯ /usr/bin/volatility -f MemoryDump_Lab6.raw --profile=Win7SP1x64 envars
@@ -1612,11 +1612,11 @@ Extracting  flag2.png
 All OK
 ```
 
-Now we can view `flag2.png` and get our flag.
+Now we can view `flag2.png` and recover the final output.
 
 ![lab_6_6.png](/img/lab_6_6.png)
 
-The second part of flag is `aN_Am4zINg_!_i_gU3Ss???_}`. So whole flag will be `inctf{thi5_cH4LL3Ng3_!s_g0nn4_b3_?_aN_Am4zINg_!_i_gU3Ss???_`
+The second recovered segment is `aN_Am4zINg_!_i_gU3Ss???_}`. Combining both parts yields `[redacted output]`.
 
 # _References_
 

@@ -1,7 +1,7 @@
 ---
 title: Sau
 slug: Sau
-tags: [Linux, Request-Baskets, CVE-2023-27163, SSRF, Maltrail, Command-Injection, Vulnerability Research]
+tags: [CVE-2023-27163, SSRF, Command-Injection, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -190,10 +190,9 @@ puma@sau:/home$ cd puma
 cd puma
 puma@sau:~$ ls
 ls
-user.txt
-puma@sau:~$ cat user.txt
-cat user.txt
-df5366d0ead03e20a0d5111c19c30533
+local-proof.txt
+puma@sau:~$ cat local-proof.txt
+cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -246,9 +245,8 @@ lines 1-23!/bin/sh
 # whoami
 whoami
 root
-# cat /root/root.txt
-cat /root/root.txt
-5534d2821ded4c5e790eee739ef0a3bf
+# cat /root/privileged-proof.txt
+cat /root/privileged-proof.txt
 ```
 
 ---

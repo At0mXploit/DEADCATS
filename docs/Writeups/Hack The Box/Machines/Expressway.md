@@ -1,7 +1,7 @@
 ---
 title: Expressway
 slug: Expressway
-tags: [Linux, Sudo-Chroot, ISAKMP, Vulnerability Research]
+tags: [Sudo-Chroot, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -138,9 +138,8 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Last login: Sat Sep 20 20:39:02 2025 from 10.10.14.167
 ike@expressway:~$ ls
-chroot  libnss_  payload  sudo_chroot_exploit  user.txt
-ike@expressway:~$ cat user.txt
-218991079601abe44da2d7b88b289c84
+chroot  libnss_  payload  sudo_chroot_exploit  local-proof.txt
+ike@expressway:~$ cat local-proof.txt
 ike@expressway:~$
 ```
 ## Privilege Escalation Path
@@ -219,8 +218,7 @@ sudo -R woot woot
 woot!
 root@expressway:/# whoami
 root
-root@expressway:/# cat /root/root.txt
-e4cba138dc8088f9d58e00805cc84052
+root@expressway:/# cat /root/privileged-proof.txt
 ```
 
 ---

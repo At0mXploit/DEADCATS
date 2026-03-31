@@ -1,7 +1,7 @@
 ---
 title: Reset
 slug: Reset
-tags: [Linux, Log-Poisoning, rlogin, Tmux, Vulnerability Research]
+tags: [Log-Poisoning, rlogin, Tmux, Vulnerability Research]
 ---
 cx# Overview
 
@@ -170,9 +170,8 @@ bash: no job control in this shell
 www-data@reset:/var/www/html$ whoami
 whoami
 www-data
-www-data@reset:/var/www/html$ cat /home/sadm/user.txt
-cat /home/sadm/user.txt
-19ba954c8ba8400cbfc0277f5f1669a4
+www-data@reset:/var/www/html$ cat /home/sadm/local-proof.txt
+cat /home/sadm/local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -307,9 +306,9 @@ reset; sh 1>&0 2>&0
 
 ```bash
 # ls
-user.txt
-# cat /root/root.txt
-cat: /root/root.txt: No such file or directory
+local-proof.txt
+# cat /root/privileged-proof.txt
+cat: /root/privileged-proof.txt: No such file or directory
 # ls /root
 root_279e22f8.txt  snap
 ```

@@ -1,7 +1,7 @@
 ---
 title: Vintage
 slug: Vintage
-tags: [Windows, Kerbrute, Kerberoasting, S4U2Self, DPAPI, gMSA-Dumper, Role-Based-Constrained-Delegation, Vulnerability Research]
+tags: [Kerberoasting, S4U2Self, DPAPI, gMSA-Dumper, Role-Based-Constrained-Delegation, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -442,8 +442,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
 Warning: User is not needed for Kerberos auth. Ticket will be used
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\C.Neri\Documents> cat ..\Desktop\user.txt 
-7f26dbdc3863bc7e15a35203a0889a4e
+*Evil-WinRM* PS C:\Users\C.Neri\Documents> cat ..\Desktop\local-proof.txt 
 ```
 ## Privilege Escalation Path
 
@@ -713,7 +712,7 @@ Lets export it and see if it works.
 └─$ export KRB5CCNAME=L.Bianchi_adm@cifs_dc01.vintage.htb@VINTAGE.target.ccache
 ```
 
-Using `wmiexec` to login here since this user doesn’t have permission for PSremote. We are able to obtain the root flag.
+Using `wmiexec` to login here since this user doesn’t have permission for PSremote. We are able to obtain the privileged-access proof.
 
 ```bash
 ┌──(kryzen㉿kali)-[~/target/Boxes/Vintage]
@@ -735,12 +734,11 @@ C:\Users\Administrator\Desktop>dir
 
 11/14/2024  07:48 PM    <DIR>          .
 06/08/2024  03:36 PM    <DIR>          ..
-04/18/2025  09:37 PM                34 root.txt
+04/18/2025  09:37 PM                34 privileged-proof.txt
                1 File(s)             34 bytes
                2 Dir(s)   5,778,948,096 bytes free
 
-C:\Users\Administrator\Desktop>type root.txt
-4a886db48e92fc17e241eee7263ef187
+C:\Users\Administrator\Desktop>type privileged-proof.txt
 ```
 
 ---

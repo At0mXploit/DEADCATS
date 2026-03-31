@@ -1,7 +1,7 @@
 ---
 title: Ten
 slug: Ten
-tags: [Linux, Newline-Injection, remco, etcd, WebDB, Path-Traversal, Vulnerability Research]
+tags: [Newline-Injection, Path-Traversal, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -230,7 +230,7 @@ lrwxrwxrwx    1 0          root                9 Jun 24  2025 .bash_history -> /
 drwx------    2 1000       tyrell           4096 Sep 28  2024 .cache
 -rw-r--r--    1 1000       tyrell            807 Jan  6  2022 .profile
 drwx------    2 1000       tyrell           4096 Sep 28  2024 .ssh
--r--------    1 1000       tyrell             33 Apr 11  2025 .user.txt
+-r--------    1 1000       tyrell             33 Apr 11  2025 .local-proof.txt
 226-Options: -a -l 
 226 9 matches total
 ```
@@ -238,14 +238,14 @@ drwx------    2 1000       tyrell           4096 Sep 28  2024 .ssh
 Now we can access and get `.ssh` and SSH. But it isnt so easy.
 
 ```bash
-ftp> get .user.txt
-local: .user.txt remote: .user.txt
+ftp> get .local-proof.txt
+local: .local-proof.txt remote: .local-proof.txt
 229 Extended Passive mode OK (|||18378|)
-553 Prohibited file name: .user.txt
-ftp> get user.txt
-local: user.txt remote: user.txt
+553 Prohibited file name: .local-proof.txt
+ftp> get local-proof.txt
+local: local-proof.txt remote: local-proof.txt
 229 Extended Passive mode OK (|||64580|)
-550 Can't open user.txt: No such file or directory
+550 Can't open local-proof.txt: No such file or directory
 ftp> cd .ssh
 553 Prohibited file name: .ssh
 ```
@@ -342,9 +342,8 @@ lrwxrwxrwx 1 root   root      9 Jun 24  2025 .bash_history -> /dev/null
 drwx------ 2 tyrell tyrell 4096 Sep 28  2024 .cache
 -rw-r--r-- 1 tyrell tyrell  807 Jan  6  2022 .profile
 drwx------ 2 tyrell tyrell 4096 Sep 28  2024 .ssh
--r-------- 1 tyrell tyrell   33 Apr 11  2025 .user.txt
-tyrell@ten:~$ cat .user.txt
-a0a255ad63b7a26d83467fa6e0a6a757
+-r-------- 1 tyrell tyrell   33 Apr 11  2025 .local-proof.txt
+tyrell@ten:~$ cat .local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -547,8 +546,7 @@ Now I can SSH into Ten:
   Memory usage: 12%               IPv4 address for eth0: 10.129.234.158
   Swap usage:   0%
 Last login: Wed Jul  2 12:28:21 2025
-root@ten:~# cat /root/root.txt
-d89266bde1e8cfe1cd70194bd899d2e7
+root@ten:~# cat /root/privileged-proof.txt
 ```
 
 ---

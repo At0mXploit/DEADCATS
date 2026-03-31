@@ -1,7 +1,7 @@
 ---
 title: Manage
 slug: Manage
-tags: [Linux, JMX, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -133,15 +133,14 @@ x                             5
 -                             5
 040776/rwxrwxrw  4096   dir   2025-12-29 21:23:34 +054  temp
 -                             5
-100444/r--r--r-  33     fil   2025-04-14 13:17:58 +054  user.txt
+100444/r--r--r-  33     fil   2025-04-14 13:17:58 +054  local-proof.txt
 -                             5
 040776/rwxrwxrw  4096   dir   2024-03-01 12:43:56 +054  webapps
 -                             5
 040776/rwxrwxrw  4096   dir   2024-03-01 10:31:49 +054  work
 -                             5
 
-meterpreter > cat user.txt
-a86d44c7243b65a9171cf7da3e0bc279
+meterpreter > cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -291,8 +290,7 @@ See "man sudo_root" for details.
 
 admin@manage:/home/useradmin$ sudo su
 [sudo] password for admin:
-root@manage:/home/useradmin# cat /root/root.txt
-b3645b7e6db6d5276ad33f0c75b8dc34
+root@manage:/home/useradmin# cat /root/privileged-proof.txt
 ```
 
 ---

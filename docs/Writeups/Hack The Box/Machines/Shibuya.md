@@ -1,7 +1,7 @@
 ---
 title: Shibuya
 slug: Shibuya
-tags: [Windows, Cross-Session-Relay-Attack, ADCS, ESC-1, RemotePotato0, Vulnerability Research]
+tags: [Cross-Session-Relay-Attack, ADCS, ESC-1, RemotePotato0, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -238,12 +238,11 @@ shibuya\simon.watson@AWSJPDC0522 C:\Users\simon.watson>dir Desktop
 
 04/08/2025  04:06 PM    <DIR>          .
 02/18/2025  11:36 AM    <DIR>          ..
-04/08/2025  04:06 PM                32 user.txt
+04/08/2025  04:06 PM                32 local-proof.txt
                1 File(s)             32 bytes
                2 Dir(s)   6,406,582,272 bytes free
 
-shibuya\simon.watson@AWSJPDC0522 C:\Users\simon.watson>type Desktop\user.txt
-73531560a013b61326392eba28efc261
+shibuya\simon.watson@AWSJPDC0522 C:\Users\simon.watson>type Desktop\local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -510,8 +509,7 @@ Impacket v0.13.0.dev0+20250130.104306.0f4b866 - Copyright Fortra, LLC and its af
 C:\Windows\system32>whoami
 nt authority\system
 
-C:\Windows\system32>type C:\Users\Administrator\Desktop\root.txt
-5b150cc71e974d37624299cdd83798f1
+C:\Windows\system32>type C:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

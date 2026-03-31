@@ -1,7 +1,7 @@
 ---
 title: Devvortex
 slug: Devvortex
-tags: [Linux, Dirb, CVE-2023-23752, Joomla, apport-cli, CVE-2023-1326, Vulnerability Research]
+tags: [CVE-2023-23752, apport-cli, CVE-2023-1326, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -564,9 +564,8 @@ To check for new updates run: sudo apt update
 
 Last login: Mon Feb 26 14:44:38 2024 from 10.10.14.23
 logan@devvortex:~$ ls
-user.txt
-logan@devvortex:~$ cat user.txt
-0de7fe4ec80fda90aeba9ff4356a9f16
+local-proof.txt
+logan@devvortex:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -652,8 +651,7 @@ Then just paste this in screen:
 ```bash
 uid=0(root) gid=0(root) groups=0(root)
 !done  (press RETURN)
-root@devvortex:/home/logan# cat /root/root.txt
-6a894db0e3e069ebbc65fd2c94531221
+root@devvortex:/home/logan# cat /root/privileged-proof.txt
 ```
 
 ---

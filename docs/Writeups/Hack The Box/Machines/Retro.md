@@ -1,7 +1,7 @@
 ---
 title: Retro
 slug: Retro
-tags: [Windows, ESC-1, Vulnerability Research]
+tags: [ESC-1, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -183,11 +183,11 @@ smb: \> ls
   .                                   D        0  Wed Apr  9 08:57:49 2025
   ..                                DHS        0  Wed Jun 11 20:02:10 2025
   ToDo.txt                            A      248  Mon Jul 24 03:50:56 2023
-  user.txt                            A       32  Wed Apr  9 08:58:01 2025
+  local-proof.txt                            A       32  Wed Apr  9 08:58:01 2025
 
                 4659711 blocks of size 4096. 1308103 blocks available
-smb: \> get user.txt
-getting file \user.txt of size 32 as user.txt (0.0 KiloBytes/sec) (average 0.0 KiloBytes/sec)
+smb: \> get local-proof.txt
+getting file \local-proof.txt of size 32 as local-proof.txt (0.0 KiloBytes/sec) (average 0.0 KiloBytes/sec)
 smb: \> get ToDo.txt
 getting file \ToDo.txt of size 248 as ToDo.txt (0.2 KiloBytes/sec) (average 0.1 KiloBytes/sec)
 smb: \> exit
@@ -204,8 +204,7 @@ Best
 
 James                                                                                                                                               
 ┌──(at0m㉿WORKSTATION)-[~]
-└─$ cat user.txt
-cbda362cff2099072c5e96c51712ff33 
+└─$ cat local-proof.txt
 ```
 ## Lateral Movement
 
@@ -370,8 +369,7 @@ C:\Windows\system32> cd c:\Users\Administrator\Desktop
 ''cd' is not recognized as an internal or external command,
 operable program or batch file.
 
-C:\Windows\system32> type c:\Users\Administrator\Desktop\root.txt
-40fce9c3f09024bcab29d377ee1ed071
+C:\Windows\system32> type c:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

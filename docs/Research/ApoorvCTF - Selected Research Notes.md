@@ -11,20 +11,20 @@ This page collects selected security research notes written in a cleaner researc
 
 ### Requiem
 
-Running the binary only prints decoy text while the real flag is decoded internally and then hidden. Static analysis shows a small encoded blob in `.rodata` at offset `0x484f4`. The program XORs each byte with `0x5a` before use, so extracting `0x2d` bytes from that offset and applying the same XOR recovers the flag directly.
+Running the binary only prints decoy text while the real secret is decoded internally and then hidden. Static analysis shows a small encoded blob in `.rodata` at offset `0x484f4`. The program XORs each byte with `0x5a` before use, so extracting `0x2d` bytes from that offset and applying the same XOR recovers the embedded string directly.
 
 ```python
 from pathlib import Path
 
 data = Path("requiem").read_bytes()
 enc = data[0x484f4:0x484f4 + 0x2d]
-flag = bytes(b ^ 0x5a for b in enc)
-print(flag.decode())
+decoded = bytes(b ^ 0x5a for b in enc)
+print(decoded.decode())
 ```
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{N0_M0R3_R3QU13M_1N_TH15_3XP3R13NC3}`
+`[redacted output]`
 
 ### Cosmic Rings
 
@@ -37,17 +37,17 @@ The first bug is in `calibrate_rings()`. An integer is read into a signed 32-bit
 
 That gives libc and PIE bases. The second bug is in `inject_plasma()`, which reads `0x30` bytes into a `0x20` stack buffer after a valid plasma signature is uploaded. This gives a saved `rbp` and return-address overwrite.
 
-Because seccomp blocks the usual shell route, the final exploit uses an ORW chain:
+Because seccomp blocks the usual shell route, the final exploit uses an ORW chain against the protected file:
 
-- `open("/flag.txt", 0)`
+- `open("/protected.txt", 0)`
 - `read(fd, buf, len)`
 - `write(1, buf, len)`
 
 The stack is pivoted into writable global memory using the overflow, and the remote exploit used file descriptor `6` after `open()`.
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{c0sm1c_b4rr13rs_br0k3n_4nd_h4v0k_s3cur3d}`
+`[redacted output]`
 
 ### The Rite of the Blessings
 
@@ -61,9 +61,9 @@ Recovered kernels:
 
 The companion script required three integers. The intended values were the determinants of those matrices: `1`, `40`, and `35`.
 
-Recovered flag:
+Recovered output:
 
-`APOORVCTF{1_40_35}`
+`[redacted output]`
 
 ### Hefty Secrets
 
@@ -73,11 +73,11 @@ Without loading the model in PyTorch, the checkpoint metadata and raw float stor
 
 Reconstructing that `256x256` matrix as an image revealed the text:
 
-`apoorvctf{l0r4_m3rg3}`
+`[redacted output]`
 
-Submitted flag:
+Submitted output:
 
-`APOORVCTF{l0r4_m3rg3}`
+`[redacted output]`
 
 ### Project Mirrorfall
 
@@ -93,27 +93,27 @@ The PDF was then converted to text and Appendix A was inspected. In the ECI list
 
 - `Y = 0.0245` from the sentence-transformer embedding pipeline applied to `ambulant`
 
-Recovered flag:
+Recovered output:
 
-`APOORVCTF{7d88323_0.0245}`
+`[redacted output]`
 
 ## Web Exploitation
 
 ### Sugar Heist
 
-The Spring Boot application exposed `/actuator`, which in turn revealed hidden admin routes including `/api/admin/flag`, `/api/admin/debug/config`, and `/api/admin/preview`.
+The Spring Boot application exposed `/actuator`, which in turn revealed hidden admin routes including a secret-retrieval endpoint, `/api/admin/debug/config`, and `/api/admin/preview`.
 
 The real bug chain was:
 
 1. `POST /api/register` allowed mass assignment, so an attacker could self-register with `"role":"ADMIN"`.
 2. `POST /api/login` returned a valid admin API token.
 3. `POST /api/admin/preview` evaluated Thymeleaf expressions, giving SSTI.
-4. `application.properties` was read to discover the true flag path `/app/flag.txt`.
-5. The real flag file was read through SSTI with a simple path obfuscation to bypass the WAF.
+4. `application.properties` was read to discover the protected file path `/app/protected.txt`.
+5. The protected file was read through SSTI with a simple path obfuscation to bypass the WAF.
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{sp3l_1nj3ct10n_sw33t_v1ct0ry_2026}`
+`[redacted output]`
 
 ### Typing Tycoon
 
@@ -124,23 +124,23 @@ The race service trusted client-controlled state too heavily:
 
 The exploit path was to start a race, then repeatedly call the sync endpoint with junk words until the race completed.
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{typ1ng_f4st3r_th4n_sh3ll_1nj3ct10n}`
+`[redacted output]`
 
 ### Cosplayer's Delight
 
-The exposed `/openapi.json` revealed undocumented endpoints: `/user/{username}`, `/my_votes`, `/vote_for`, and `/flag`.
+The exposed `/openapi.json` revealed undocumented endpoints: `/user/{username}`, `/my_votes`, `/vote_for`, and a final secret-retrieval route.
 
 A demo account was available. The critical flaw was that duplicate votes still leaked `recent_voters`, which made it possible to reconstruct a useful voter graph. Repeating vote queries across targets already voted on by the demo account showed that the standout voter was `victor`. His final five votes were:
 
 `emilysys -> devon. -> judy -> dave -> alice`
 
-Submitting that sequence to `/flag` returned the real flag.
+Submitting that sequence to the retrieval route returned the final secret.
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{gr4Ph_l34k5_r3v34l_v1cT0r5_l45t_v0t35_7f2a9}`
+`[redacted output]`
 
 ## Side Channels and Crypto
 
@@ -160,7 +160,7 @@ This recovered the full password:
 
 Submitting that password returned:
 
-`apoorvctf{con5t4nt_tim3_or_di3}`
+`[redacted output]`
 
 ### Cable's Temporal Loop
 
@@ -172,9 +172,9 @@ The harder part was that every decryption query also had to satisfy:
 
 That constraint was bypassed by prepending one adjustable 16-byte block so the full ciphertext matched the required residue while leaving the target CBC structure intact. From there, the attack reduced to a state-aware padding oracle and the plaintext was recovered remotely in `7708` oracle queries.
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{T1m3_trAv3l_w1ll_n0t_h3lp_w1th_st4t3_crypt0}`
+`[redacted output]`
 
 ## Protocols, Services, and Misc
 
@@ -192,9 +192,9 @@ The solve path was:
 3. Identify the repeated padding root and the character root.
 4. Decrypt all stored entries and reconstruct readable text from each anagram bag.
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{__gr3at_w0rk_p0lynomi4l_G0dS_67}`
+`[redacted output]`
 
 ### The Leaky Router
 
@@ -210,20 +210,20 @@ The final packet used:
 - `INNER_PROTO = 3`
 - `PAYLOAD = GIVE_FLAG`
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{tun3l_v1s10n_byp4ss}`
+`[redacted output]`
 
 ### Riddler's Respite
 
-This service had three menu stages. The first two returned flag-shaped strings that acted as passwords for the next stage, while the third returned the real flag.
+This service had three menu stages. The first two returned token-shaped strings that acted as passwords for the next stage, while the third returned the final protected value.
 
 The progression was:
 
-1. Stage 1: exploit `mex(array) * xor(array)` with carefully chosen inputs to recover `apoorvctf{m3xtim3sx0r}`
-2. Stage 2: recognize the tree function as the Wiener index and craft trees whose pairwise distance sums match the requested values, recovering `apoorvctf{sUm0fp4th3}`
+1. Stage 1: exploit `mex(array) * xor(array)` with carefully chosen inputs to recover `[redacted output]`
+2. Stage 2: recognize the tree function as the Wiener index and craft trees whose pairwise distance sums match the requested values, recovering `[redacted output]`
 3. Stage 3: identify the permutation function as the longest cycle length and submit direct cycles of the required sizes
 
-Final recovered flag:
+Recovered output:
 
-`apoorvctf{___CTF_m4r3_l3k3__CPF_000p3_ouwuo_}`
+`[redacted output]`

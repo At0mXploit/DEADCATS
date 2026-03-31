@@ -1,7 +1,7 @@
 ---
 title: Previous
 slug: Previous
-tags: [Linux, CVE-2025-29927, LFI, Next-JS, Terraform, Vulnerability Research]
+tags: [CVE-2025-29927, LFI, Next-JS, Terraform, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -305,9 +305,8 @@ We got `Jeremy:MyNameIsJeremyAndILovePancakes`. SSH.
 
 ```bash
 jeremy@previous:~$ ls
-docker  user.txt
-jeremy@previous:~$ cat user.txt
-b7b5c699e13baafe4904362003f2fe65
+docker  local-proof.txt
+jeremy@previous:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## Terraform Exploit
@@ -340,7 +339,7 @@ drwxr-xr-x 3 jeremy jeremy 4096 Aug 21 20:09 docker
 -rw-r--r-- 1 jeremy jeremy  807 Aug 21 17:28 .profile
 drwxr-xr-x 2 root   root   4096 Sep  4 15:06 .terraform.d
 -rw-rw-r-- 1 jeremy jeremy  107 Sep  4 15:01 .terraformrc
--rw-r----- 1 root   jeremy   33 Sep  4 15:00 user.txt
+-rw-r----- 1 root   jeremy   33 Sep  4 15:00 local-proof.txt
 jeremy@previous:~$
 ```
 
@@ -382,7 +381,7 @@ Read [Terraform Exploit](https://github.com/dollarboysushil/Privilege-Escalation
 
 ```bash
 jeremy@previous:~$ ls
-docker  user.txt
+docker  local-proof.txt
 jeremy@previous:~$ cat /opt/examples/*.tf
 terraform {
   required_providers {
@@ -450,8 +449,7 @@ destination_path = "/home/jeremy/docker/previous/public/examples/hello-world.ts"
 jeremy@previous:~$ /bin/bash -p
 bash-5.1# whoami
 root
-bash-5.1# cat /root/root.txt
-00cabb413365b267c8fe09045b4ca30e
+bash-5.1# cat /root/privileged-proof.txt
 ```
 
 ---

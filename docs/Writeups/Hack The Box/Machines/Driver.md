@@ -1,7 +1,7 @@
 ---
 title: Driver
 slug: Driver
-tags: [Windows, Responder, CVE-2021-1675, PrintNightmare, Vulnerability Research]
+tags: [CVE-2021-1675, PrintNightmare, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -145,8 +145,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
                                         
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\tony\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\tony\Desktop> cat user.txt
-cb27c19cbe842c5feb348b57e8dbd166
+*Evil-WinRM* PS C:\Users\tony\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## [CVE-2021-1675 - PrintNightmare LPE](https://github.com/calebstewart/CVE-2021-1675)
@@ -242,8 +241,7 @@ The command completed successfully.
 $ evil-winrm -i 10.129.147.28 -u amroot -p P@ssw0rd123!
 
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\amroot\Documents> type C:\Users\Administrator\Desktop\root.txt
-68b19ec85e03c5d7d4aa1cd1c3bbf454
+*Evil-WinRM* PS C:\Users\amroot\Documents> type C:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

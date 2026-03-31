@@ -1,7 +1,7 @@
 ---
 title: Phanthom
 slug: Phanthom
-tags: [Windows, S4U2Self, Resource-Based-Constrained-Delegation, Vulnerability Research]
+tags: [S4U2Self, Resource-Based-Constrained-Delegation, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -285,8 +285,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
 
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\svc_sspr\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\svc_sspr\Desktop> cat user.txt
-eba10c7762bcce3e7dc21ddae8e7ad94
+*Evil-WinRM* PS C:\Users\svc_sspr\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 

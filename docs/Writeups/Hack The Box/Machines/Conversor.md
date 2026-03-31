@@ -1,7 +1,7 @@
 ---
 title: Conversor
 slug: Conversor
-tags: [Linux, needrestart, XSLT-Injection, Vulnerability Research]
+tags: [XSLT-Injection, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -524,8 +524,7 @@ Crack hash from crackstation `fismathack:Keepmesafeandwarm`.
 $ ssh fismathack@conversor.htb
 
 Last login: Sat Oct 25 20:27:04 2025 from 10.10.14.148
-fismathack@conversor:~$ cat user.txt
-0f10412fe5d013442ada9e976fe2b888
+fismathack@conversor:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## `needrestart`

@@ -1,7 +1,7 @@
 ---
 title: Hack Net
 slug: Hack-Net
-tags: [SSTI, Django, GPG-Decryption, Linux, Vulnerability Research]
+tags: [SSTI, Django, GPG-Decryption, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -247,9 +247,8 @@ We got creds `mikey@hacknet.htb:mYd4rks1dEisH3re` Now SSH.
 ❯ ssh mikey@hacknet.htb
 
 mikey@hacknet:~$ ls
-user.txt
-mikey@hacknet:~$ cat user.txt
-15c56490f886115ee3c2c9d52fe96a54
+local-proof.txt
+mikey@hacknet:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -832,9 +831,8 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Last login: Sun Sep 14 21:30:31 2025 from 10.10.14.233
 root@hacknet:~# ls
-root.txt
-root@hacknet:~# cat root.txt
-1f206c2a8d2cd62eb52d175480c2f89b
+privileged-proof.txt
+root@hacknet:~# cat privileged-proof.txt
 ```
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: Titanic
-slug: Titanic-Vulnerability-Research
-tags: [Linux, LFI, Gitea, ImageMagick, Credential Exposure, Privilege Escalation, Vulnerability Research]
+slug: /Titanic-Vulnerability-Research
+tags: [LFI, ImageMagick, Credential Exposure, Privilege Escalation, Vulnerability Research]
 ---
 
 ## Executive Summary

@@ -1,7 +1,7 @@
 ---
 title: Scepter
 slug: Scepter
-tags: [Windows, DcSync, ESC-14, Vulnerability Research]
+tags: [DcSync, ESC-14, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -435,8 +435,7 @@ Warning: Remote path completions is disabled due to ruby limitation: quoting_det
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\h.brown\Documents> type ../desktop/user.txt
-d91e9c5b39e7ce3005d4eea902372cb0
+*Evil-WinRM* PS C:\Users\h.brown\Documents> type ../desktop/local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -582,8 +581,7 @@ Warning: Remote path completions is disabled due to ruby limitation: quoting_det
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\Administrator\Documents> type ..\Desktop\root.txt
-8aac569992a576f67a0628eec0092dfc
+*Evil-WinRM* PS C:\Users\Administrator\Documents> type ..\Desktop\privileged-proof.txt
 ```
 
 ---

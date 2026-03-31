@@ -1,7 +1,7 @@
 ---
 title: Bamboo
 slug: Bamboo
-tags: [Linux, Spose, Papercut, Squid-Proxy, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -300,10 +300,9 @@ release
 runtime
 server
 uninstall
-user.txt
-papercut@bamboo:~$ cat user.txt
-cat user.txt
-5af3e79df0570bca50bd92ddd6e148e9
+local-proof.txt
+papercut@bamboo:~$ cat local-proof.txt
+cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -349,8 +348,7 @@ papercut@bamboo:~/server/bin/linux-x64$ bash -p
 bash -p
 whoami
 root
-cat /root/root.txt
-7a003cc6cca79bd2ec807ba2f23c8d24
+cat /root/privileged-proof.txt
 ```
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: Authority
 slug: Authority
-tags: [Windows, Certipy, ESC-1, PWM, Ansible, SMBMap, Enum4Linux, Vulnerability Research]
+tags: [ESC-1, PWM, Ansible, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -544,8 +544,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
                                         
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\svc_ldap\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\svc_ldap\Desktop> cat user.txt
-680ae24e08abf43a03464cd1c24eced4
+*Evil-WinRM* PS C:\Users\svc_ldap\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -752,8 +751,7 @@ Warning: Remote path completions is disabled due to ruby limitation: quoting_det
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\svc_ldap\Documents> cat C:\Users\Administrator\Desktop\root.txt
-4d7aba785a933537a911cce0a9da6174
+*Evil-WinRM* PS C:\Users\svc_ldap\Documents> cat C:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

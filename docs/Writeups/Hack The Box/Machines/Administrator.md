@@ -1,7 +1,7 @@
 ---
 title: Administrator
 slug: Administrator
-tags: [Windows, DcSync, Vulnerability Research]
+tags: [DcSync, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -167,8 +167,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
                                         
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\emily\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\emily\Desktop> cat user.txt
-a22293f7e25a175b12047d0d50aff4de
+*Evil-WinRM* PS C:\Users\emily\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -259,8 +258,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
                                         
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-8016dca6838610eea9579e9d83501e9b
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
 ```
 
 ---

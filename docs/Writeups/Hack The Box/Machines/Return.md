@@ -1,7 +1,7 @@
 ---
 title: Return
 slug: Return
-tags: [Windows, LDAP, ServerOperators, VSS, Vulnerability Research]
+tags: [ServerOperators, VSS, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -126,8 +126,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
                                         
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\svc-printer\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\svc-printer\Desktop> cat user.txt
-258e32d3e3bebf31bbdb6c4017a975b6
+*Evil-WinRM* PS C:\Users\svc-printer\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -254,9 +253,8 @@ C:\Windows\system32>whoami
 whoami
 nt authority\system
 
-C:\Windows\system32>type c:\Users\Administrator\Desktop\root.txt
-type c:\Users\Administrator\Desktop\root.txt
-1768bfd911829e7cb69378965e5b61cd
+C:\Windows\system32>type c:\Users\Administrator\Desktop\privileged-proof.txt
+type c:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

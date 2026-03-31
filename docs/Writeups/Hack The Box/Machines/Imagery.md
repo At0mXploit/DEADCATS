@@ -1,7 +1,7 @@
 ---
 title: Imagery
 slug: Imagery
-tags: [Linux, XSS, Charcol, LFI, Command-Injection, Vulnerability Research]
+tags: [XSS, LFI, Command-Injection, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -600,10 +600,9 @@ bash-5.2$ cd /home/mark
 cd /home/mark
 bash-5.2$ ls
 ls
-user.txt
-bash-5.2$ cat user.txt
-cat user.txt
-b71ee96c2bd4913d0be2359140816553
+local-proof.txt
+bash-5.2$ cat local-proof.txt
+cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## Charcol
@@ -717,9 +716,8 @@ bash-5.2$ /usr/bin/bash -p
 bash-5.2# whoami
 whoami
 root
-bash-5.2# cat /root/root.txt
-cat /root/root.txt
-d926b9e642c9ec82097f2f73f24bc4a1
+bash-5.2# cat /root/privileged-proof.txt
+cat /root/privileged-proof.txt
 ```
 
 ---

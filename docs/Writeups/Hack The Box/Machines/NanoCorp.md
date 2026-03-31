@@ -1,7 +1,7 @@
 ---
 title: Nano Corp
 slug: Nano-Corp
-tags: [Windows, NTLM-Reflection, Vulnerability Research]
+tags: [NTLM-Reflection, Vulnerability Research]
 ---
 ## Initial Surface
 
@@ -267,10 +267,9 @@ PS C:\Users\monitoring_svc\Desktop> ls
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
--ar---         11/9/2025   7:40 AM             34 user.txt
+-ar---         11/9/2025   7:40 AM             34 local-proof.txt
 
-PS C:\Users\monitoring_svc\Desktop> cat user.txt
-5fa176064918e02399a3fdc9bf4eba8d
+PS C:\Users\monitoring_svc\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -367,8 +366,7 @@ Impacket v0.14.0.dev0+20251107.4500.2f1d6eb2 - Copyright Fortra, LLC and its aff
 └─$ nc 127.0.0.1 11000
 Type help for list of commands
 
-# type C:\Users\Administrator\Desktop\root.txt
-f609d95a2f0b8fb0fe55af25ee4360f0
+# type C:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

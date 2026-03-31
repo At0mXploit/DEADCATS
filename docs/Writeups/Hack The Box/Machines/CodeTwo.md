@@ -1,7 +1,7 @@
 ---
 title: Code Two
 slug: Code-Two
-tags: [Linux, JS2PY, Backup, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -280,9 +280,8 @@ Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your 
 
 Last login: Tue Aug 19 15:06:03 2025 from 10.10.14.93
 marco@codetwo:~$ ls
-backups  npbackup.conf  user.txt
-marco@codetwo:~$ cat user.txt
-9840ae9038662045914e439eb9144bc9
+backups  npbackup.conf  local-proof.txt
+marco@codetwo:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -517,8 +516,7 @@ restic 0.0.0
 marco@codetwo:~$ ls -l /tmp/rootbash
 -rwsr-xr-x 1 root root 1183448 Aug 19 15:18 /tmp/rootbash
 marco@codetwo:~$ /tmp/rootbash -p
-rootbash-5.0# cat /root/root.txt
-53417abed60eebe1252bde11bc5a5aee
+rootbash-5.0# cat /root/privileged-proof.txt
 ```
 
 ---

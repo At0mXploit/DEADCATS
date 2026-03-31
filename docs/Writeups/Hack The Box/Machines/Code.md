@@ -1,7 +1,7 @@
 ---
 title: Code
 slug: Code
-tags: [Linux, SSTI, Vulnerability Research]
+tags: [SSTI, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -234,7 +234,7 @@ username: development
 password: development
 ```
 
-- We only need of martin right now since its only user in target but first lets grab `user.txt`.
+- We only need of martin right now since its only user in target but first lets grab `local-proof.txt`.
 ## User Flag
 
 ```bash
@@ -252,9 +252,9 @@ cd app-production
 app-production@code:~$ ls
 ls
 app
-user.txt
-app-production@code:~$ cat user.txt
-cat user.txt
+local-proof.txt
+app-production@code:~$ cat local-proof.txt
+cat local-proof.txt
 # User-level proof
 app-production@code:~$ 
 ```
@@ -352,7 +352,7 @@ tar: Removing leading `/var/../' from member names
 /var/../root/scripts/database.db
 /var/../root/scripts/cleanup2.sh
 /var/../root/.python_history
-/var/../root/root.txt
+/var/../root/privileged-proof.txt
 /var/../root/.cache/
 /var/../root/.cache/motd.legal-displayed
 /var/../root/.ssh/
@@ -379,7 +379,7 @@ root/scripts/backups/code_home_app-production_app_2024_August.tar.bz2
 root/scripts/database.db
 root/scripts/cleanup2.sh
 root/.python_history
-root/root.txt
+root/privileged-proof.txt
 root/.cache/
 root/.cache/motd.legal-displayed
 root/.ssh/
@@ -391,8 +391,8 @@ martin@code:~/backups$ ls
 code_home_app-production_app_2024_August.tar.bz2  code_var_.._root_2025_March.tar.bz2  root  task.json
 martin@code:~/backups$ cd root
 martin@code:~/backups/root$ ls
-root.txt  scripts
-martin@code:~/backups/root$ cat root.txt
+privileged-proof.txt  scripts
+martin@code:~/backups/root$ cat privileged-proof.txt
 # Root-level proof
 martin@code:~/backups/root$ 
 ```

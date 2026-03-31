@@ -1,7 +1,7 @@
 ---
 title: Job
 slug: Job
-tags: [Windows, PrintSpoofer, SeImpersonatePrivilege, BadODF, ODT, Vulnerability Research]
+tags: [PrintSpoofer, SeImpersonatePrivilege, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -328,8 +328,7 @@ connect to [10.10.15.108] from (UNKNOWN) [10.129.234.73] 54939
 
 PS C:\Program Files\LibreOffice\program> whoami
 job\jack.black
-PS C:\Program Files\LibreOffice\program> cat C:\\Users\\jack.black\\Desktop\user.txt
-0a2752b2689fce8c4d85e701d726294e
+PS C:\Program Files\LibreOffice\program> cat C:\\Users\\jack.black\\Desktop\local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -461,14 +460,13 @@ C:\Windows\system32>whoami
 whoami
 nt authority\system
 
-C:\Windows\system32>cat C:\\Users\\Administrator\\Desktop\root.txt
-cat C:\\Users\\Administrator\\Desktop\root.txt
+C:\Windows\system32>cat C:\\Users\\Administrator\\Desktop\privileged-proof.txt
+cat C:\\Users\\Administrator\\Desktop\privileged-proof.txt
 'cat' is not recognized as an internal or external command,
 operable program or batch file.
 
-C:\Windows\system32>type C:\\Users\\Administrator\\Desktop\root.txt
-type C:\\Users\\Administrator\\Desktop\root.txt
-ece2117f0aa20442a59eb83e17e368a3
+C:\Windows\system32>type C:\\Users\\Administrator\\Desktop\privileged-proof.txt
+type C:\\Users\\Administrator\\Desktop\privileged-proof.txt
 ```
 
 ---

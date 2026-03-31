@@ -1,7 +1,7 @@
 ---
 title: Editor
 slug: Editor
-tags: [Linux, Ndsudo, XWiki, Vulnerability Research]
+tags: [Ndsudo, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -250,8 +250,8 @@ Password is `xwiki:theEd1t0rTeam99` but user SSH to `xwiki` doesn't work so I tr
 oliver@10.10.11.80 password:
 
 oliver@editor:~$ ls
-fakebin  linpeas.sh  malicious.c  megacli  nvme  user.txt
-oliver@editor:~$ cat user.txt
+fakebin  linpeas.sh  malicious.c  megacli  nvme  local-proof.txt
+oliver@editor:~$ cat local-proof.txt
 <REDACTED>
 ```
 ## Privilege Escalation Path
@@ -387,7 +387,7 @@ oliver@editor:/tmp$ /opt/netdata/usr/libexec/netdata/plugins.d/ndsudo nvme-list
 root@editor:/tmp# id
 uid=0(root) gid=0(root) groups=0(root),999(netdata),1000(oliver)
 root@editor:/tmp# cd /root
-root@editor:/root# cat root.txt
+root@editor:/root# cat privileged-proof.txt
 <REDACTED>
 ```
 

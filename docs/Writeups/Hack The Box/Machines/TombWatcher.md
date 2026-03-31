@@ -1,7 +1,7 @@
 ---
 title: Tomb Watcher
 slug: Tomb-Watcher
-tags: [Windows, ESC-15, Certipy, Pass-The-Certificate, Pass-The-Hash, Kerberoasting, Bloodhound, gMSA-Dumper, TargetedKerberoast, Vulnerability Research]
+tags: [ESC-15, Kerberoasting, gMSA-Dumper, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -430,10 +430,9 @@ Now from this change the Password.
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--ar---         9/5/2025  10:02 AM             34 user.txt
+-ar---         9/5/2025  10:02 AM             34 local-proof.txt
 
-*Evil-WinRM* PS C:\Users\john\Desktop> cat user.txt
-99ad70e6714f6646423b7d05c0f4f33d
+*Evil-WinRM* PS C:\Users\john\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -775,10 +774,9 @@ Info: Establishing connection to remote endpoint
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--ar---         9/5/2025  10:02 AM             34 root.txt
+-ar---         9/5/2025  10:02 AM             34 privileged-proof.txt
 
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-4aa65c4bc041de90909ce10dcf1ca971
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
 ```
 ## Time Reset
 

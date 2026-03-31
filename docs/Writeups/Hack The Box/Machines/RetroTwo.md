@@ -1,7 +1,7 @@
 ---
 title: Retro Two
 slug: Retro-Two
-tags: [Windows, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -185,7 +185,7 @@ Now we can RDP.
 xfreerdp /u:ldapreader /p:ppYaVcB5R /v:BLN01.retro2.vl /tls-seclevel:0 
 ```
 
-`user.txt` is at the root of the C: drive.
+`local-proof.txt` is at the root of the C: drive.
 ## Privilege Escalation Path
 
 Do `systeminfo` in PS in RDP.

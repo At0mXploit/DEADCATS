@@ -1,7 +1,7 @@
 ---
 title: Rusty Key
 slug: Rusty-Key
-tags: [Windows, Resource-Based-Constrained-Delegation, S4U2Self, COM-Hijack, DcSync, Timeroasting, Vulnerability Research]
+tags: [Resource-Based-Constrained-Delegation, S4U2Self, COM-Hijack, DcSync, Timeroasting, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -247,7 +247,7 @@ $ export KRB5CCNAME=bb.morgan.ccache
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 -a----         6/4/2025   9:15 AM           1976 internal.pdf
--ar---       10/24/2025  11:02 AM             34 user.txt
+-ar---       10/24/2025  11:02 AM             34 local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -599,8 +599,7 @@ The system cannot find the path specified.
 
 C:\>cd c:\Users\administrator
 c:\Users\administrator>cd Desktop
-c:\Users\administrator\Desktop>type root.txt
-398dfbc6956ed5834b619dbcbab2eec0
+c:\Users\administrator\Desktop>type privileged-proof.txt
 ```
 
 We can also try DCSync.

@@ -1,7 +1,7 @@
 ---
 title: Snoopy
 slug: Snoopy
-tags: [Linux, CVE-2023-20052, DNS-Poisoning, CVE-2023-23946, LFI, SSH-Honeypot, Vulnerability Research]
+tags: [CVE-2023-20052, DNS-Poisoning, CVE-2023-23946, LFI, SSH-Honeypot, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -1152,9 +1152,8 @@ To restore this content, you can run the 'unminimize' command.
 Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
 
 sbrown@snoopy:~$ ls
-scanfiles  user.txt
-sbrown@snoopy:~$ cat user.txt
-adc28956f0c3adb8d707251f0388c224
+scanfiles  local-proof.txt
+sbrown@snoopy:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -1368,8 +1367,7 @@ To restore this content, you can run the 'unminimize' command.
 Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
 
 Last login: Fri May 12 21:28:56 2023 from 10.10.14.46
-root@snoopy:~# cat root.txt
-97b25a98f19f0ba3dc32ab075ea3918f
+root@snoopy:~# cat privileged-proof.txt
 ```
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: Fluffy
 slug: Fluffy
-tags: [Windows, Pass-The-Certificate, Pass-The-Hash, ESC-16, Certipy, Vulnerability Research]
+tags: [ESC-16, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -597,11 +597,10 @@ Info: Establishing connection to remote endpoint
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--ar---        6/16/2025   2:02 PM             34 user.txt
+-ar---        6/16/2025   2:02 PM             34 local-proof.txt
 
 *Evil-WinRM* PS C:\Users\winrm_svc\Documents> cd ../Desktop
-*Evil-WinRM* PS C:\Users\winrm_svc\Desktop> cat user.txt
-93f2c0e9d543156616ecf3acb10d5e15
+*Evil-WinRM* PS C:\Users\winrm_svc\Desktop> cat local-proof.txt
 *Evil-WinRM* PS C:\Users\winrm_svc\Desktop> 
 ```
 
@@ -891,10 +890,9 @@ d-----        5/19/2025   3:33 PM                WindowsPowerShell
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--ar---        6/16/2025  11:59 PM             34 root.txt
+-ar---        6/16/2025  11:59 PM             34 privileged-proof.txt
 
-*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
-e96a0609a3b31e9b26bfecc596752945
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat privileged-proof.txt
 *Evil-WinRM* PS C:\Users\Administrator\Desktop> 
 ```
 # NICE.

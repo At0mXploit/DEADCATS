@@ -1,7 +1,7 @@
 ---
 title: Build
 slug: Build
-tags: [Linux, Jenkis, Gitea, DNS-Poisoning, Vulnerability Research]
+tags: [DNS-Poisoning, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -231,7 +231,7 @@ eth0    0.0.0.0         172.18.0.1      0.0.0.0
 eth0    172.18.0.0      0.0.0.0         255.255.0.0
 ```
 
-Enumeration within the container’s root home directory (`/root`) revealed the user flag (`user.txt`) and a hidden `.rhosts` file.
+Enumeration within the container’s root home directory (`/root`) revealed the local-access proof (`local-proof.txt`) and a hidden `.rhosts` file.
 
 ```bash
 root@5ac6c7d6fb8e:/var/jenkins_home/workspace/build_dev_main# ls -la /root
@@ -242,10 +242,9 @@ drwxr-xr-x 1 root root 4096 May  9  2024 ..
 lrwxrwxrwx 1 root root    9 May  1  2024 .bash_history -> /dev/null
 -r-------- 1 root root   35 May  1  2024 .rhosts
 drwxr-xr-x 2 root root 4096 May  1  2024 .ssh
--rw------- 1 root root   33 Apr 15  2025 user.txt
-root@5ac6c7d6fb8e:/var/jenkins_home/workspace/build_dev_main# cat /root/user.txt
-<s_home/workspace/build_dev_main# cat /root/user.txt          
-466098e1d44521703f270f93699c40f7
+-rw------- 1 root root   33 Apr 15  2025 local-proof.txt
+root@5ac6c7d6fb8e:/var/jenkins_home/workspace/build_dev_main# cat /root/local-proof.txt
+<s_home/workspace/build_dev_main# cat /root/local-proof.txt          
 ```
 
 The contents of `.rhosts` indicated that passwordless RSH access as root might be allowed from hosts named `admin.build.vl` and `intern.build.vl`. This file is significant for later privilege escalation.
@@ -457,8 +456,7 @@ See https://ubuntu.com/esm or run: sudo pro status
 The list of available updates is more than a week old.
 To check for new updates run: sudo apt update
 
-root@build:~# cat /root/root.txt
-b7b1e48179891ea87e77b1f83bada971
+root@build:~# cat /root/privileged-proof.txt
 ```
 
 ---

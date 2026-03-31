@@ -1,7 +1,7 @@
 ---
 title: Down
 slug: Down
-tags: [Command-Injection, Pswm, Vulnerability Research]
+tags: [Command-Injection, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -321,9 +321,8 @@ User aleks may run the following commands on down:
     (ALL : ALL) ALL
 aleks@down:~/.local/share/pswm$ sudo su
 sudo su
-root@down:/home/aleks/.local/share/pswm# cat /root/root.txt
-cat /root/root.txt
-87bb9869a311b8abb5fb4d3c7248fdcb
+root@down:/home/aleks/.local/share/pswm# cat /root/privileged-proof.txt
+cat /root/privileged-proof.txt
 ```
 
 ---

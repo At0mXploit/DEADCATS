@@ -1,7 +1,7 @@
 ---
 title: Trick
 slug: Trick
-tags: [Linux, LFI, Fail2ban, Vulnerability Research]
+tags: [LFI, Fail2ban, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -232,9 +232,8 @@ michael@trick:~$
 
 ```bash
 michael@trick:~$ ls
-Desktop  Documents  Downloads  Music  Pictures  Public  Templates  user.txt  Videos
-michael@trick:~$ cat user.txt
-d9ef7bc94c47d21d018ac0af7dcf33eb
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  local-proof.txt  Videos
+michael@trick:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## Fail2ban
@@ -502,8 +501,7 @@ vmlinuz
 vmlinuz.old
 whoami
 root
-cat /root/root.txt
-401db789ed333c72040b54c52bb9246e
+cat /root/privileged-proof.txt
 ```
 
 Just wait until you get something or try that script one two time more.

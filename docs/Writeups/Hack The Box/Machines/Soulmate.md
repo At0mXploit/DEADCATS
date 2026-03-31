@@ -1,7 +1,7 @@
 ---
 title: Soulmate
 slug: Soulmate
-tags: [Linux, CVE-2025-31161, CVE-2025-32433-Erlang-OTP-SSH-RCE, Vulnerability Research]
+tags: [CVE-2025-31161, CVE-2025-32433-Erlang-OTP-SSH-RCE, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -382,9 +382,8 @@ Now SSH with ben creds `ben:HouseH0ldings998`
 ben@soulmate.htb's password:
 Last login: Sun Sep 7 15:58:34 2025 from 10.10.14.233
 ben@soulmate:~$ ls
-user.txt
-ben@soulmate:~$ cat user.txt
-dcd96042a937de10ce8fb36f75aa2928
+local-proof.txt
+ben@soulmate:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -453,9 +452,8 @@ connect to [10.10.14.233] from (UNKNOWN) [10.10.11.86] 38008
 bash: cannot set terminal process group (3233): Inappropriate ioctl for device
 bash: no job control in this shell
 root@soulmate:/#
-root@soulmate:/# cat /root/root.txt
-cat /root/root.txt
-2b68ff98cd27d99aed0fddcd8ae58b7c
+root@soulmate:/# cat /root/privileged-proof.txt
+cat /root/privileged-proof.txt
 root@soulmate:/#
 ```
 

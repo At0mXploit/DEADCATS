@@ -1,7 +1,7 @@
 ---
 title: Strutted
 slug: Strutted
-tags: [Linux, CVE-2023-50164, Apache-Struts, tcpdump, Vulnerability Research]
+tags: [CVE-2023-50164, Apache-Struts, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -240,8 +240,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added 'strutted.htb' (ED25519) to the list of known hosts.
 james@strutted.htb's password:
 
-james@strutted:~$ cat user.txt
-fecb6a8f1e9a1730951e52c4b95aa307
+james@strutted:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## tcpdump
@@ -272,8 +271,7 @@ Maximum file limit reached: 1
 james@strutted:~$ /tmp/bash -p
 bash-5.1# id
 uid=1000(james) gid=1000(james) euid=0(root) egid=0(root) groups=0(root),27(sudo),1000(james)
-bash-5.1# cat /root/root.txt
-1aa272e845f1e11b5a45225884552a3a
+bash-5.1# cat /root/privileged-proof.txt
 ```
 
 ---

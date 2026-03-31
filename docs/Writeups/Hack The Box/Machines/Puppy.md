@@ -1,7 +1,7 @@
 ---
 title: Puppy
 slug: Puppy
-tags: [Windows, Kerberoasting, Bloodhound, DPAPI, Impacket-PsExec, RPCClient, KeePass4Brute, Vulnerability Research]
+tags: [Kerberoasting, DPAPI, Impacket-PsExec, KeePass4Brute, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -324,8 +324,7 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
 
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\adam.silver\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\adam.silver\Desktop> cat user.txt
-2d728f49f8c826bef5cf0a927cf61116
+*Evil-WinRM* PS C:\Users\adam.silver\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -508,8 +507,7 @@ Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies
 Microsoft Windows [Version 10.0.20348.3453]
 (c) Microsoft Corporation. All rights reserved.
 
-C:\Windows\system32> type c:\Users\Administrator\Desktop\root.txt
-b5914fa717e94dab14b286141b9a446e
+C:\Windows\system32> type c:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

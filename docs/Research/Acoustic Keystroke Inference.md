@@ -10,7 +10,7 @@ custom_edit_url: null
 
 ## Abstract
 
-This paper presents a practical acoustic side-channel attack against keyboard input using only single-channel waveform recordings. The analysis uses a long labeled reference capture containing repeated keystrokes across the alphabet and a short unlabeled capture containing the target secret. The recovery pipeline consists of keystroke event detection, handcrafted feature extraction, supervised classification, and sequence decoding. A Random Forest classifier trained on the reference data achieves perfect in-sample separation and recovers the target sequence from the unknown sample. The final recovered token is `ohyougotthisfardamn`.
+This paper presents a practical acoustic side-channel attack against keyboard input using only single-channel waveform recordings. The analysis uses a long labeled reference capture containing repeated keystrokes across the alphabet and a short unlabeled capture containing the target secret. The recovery pipeline consists of keystroke event detection, handcrafted feature extraction, supervised classification, and sequence decoding. A Random Forest classifier trained on the reference data achieves perfect in-sample separation and recovers the target sequence from the unknown sample. The final recovered sequence is `[redacted token]`.
 
 This exercise demonstrates that even low-cost audio observations can leak sensitive typed content when attacker-controlled calibration data is available.
 
@@ -21,9 +21,9 @@ Keyboard acoustic emanations remain a realistic side-channel risk in shared or s
 In this study, the objective was to infer a hidden keystroke sequence from controlled recordings:
 
 - `Reference.wav`: repeated labeled keypresses for all alphabet keys in known order
-- `flag.wav`: an unknown keystroke sequence containing the target payload
+- `target.wav`: an unknown keystroke sequence containing the target payload
 
-The goal was to reconstruct the hidden sequence and recover the final flag.
+The goal was to reconstruct the hidden sequence and recover the final output.
 
 ## 2. Dataset and Threat Model
 
@@ -89,7 +89,7 @@ Training accuracy reaches `1.000`, which indicates very strong class separabilit
 
 ### 3.4 Decoding Procedure
 
-The same detection and feature-extraction pipeline is applied to `flag.wav`. Predicted labels from the trained classifier are concatenated in event order to recover the hidden plaintext.
+The same detection and feature-extraction pipeline is applied to `target.wav`. Predicted labels from the trained classifier are concatenated in event order to recover the hidden plaintext.
 
 ## 4. Results
 
@@ -99,9 +99,9 @@ Predicted 19-character sequence:
 
 Representative per-keystroke confidence scores stay consistently high, roughly between 76% and 97%, which supports the stability of the recovered sequence across the target sample.
 
-Recovered flag:
+Recovered output:
 
-`apoorvctf{ohyougotthisfardamn}`
+`[redacted output]`
 
 ## 5. Discussion
 

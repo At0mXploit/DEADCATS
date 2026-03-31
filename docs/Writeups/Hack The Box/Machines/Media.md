@@ -1,7 +1,7 @@
 ---
 title: Media
 slug: Media
-tags: [Windows, NTLM_Theft, Responder, SeImpersonatePrivilege, Symlink, GodPotato, FullPowers, Vulnerability Research]
+tags: [SeImpersonatePrivilege, Symlink, GodPotato, FullPowers, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -127,10 +127,9 @@ PS C:\Users\enox\Desktop> ls
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
--ar---        10/14/2025   1:30 PM             34 user.txt
+-ar---        10/14/2025   1:30 PM             34 local-proof.txt
 
-PS C:\Users\enox\Desktop> cat .\user.txt
-949cb020fe287455cc6f60313944ffe5
+PS C:\Users\enox\Desktop> cat .\local-proof.txt
 ```
 ## Lateral Movement
 
@@ -511,8 +510,7 @@ SeIncreaseWorkingSetPrivilege             Increase a process working set        
 SeTimeZonePrivilege                       Change the time zone                                               Enabled 
 SeCreateSymbolicLinkPrivilege             Create symbolic links                                              Enabled 
 SeDelegateSessionUserImpersonatePrivilege Obtain an impersonation token for another user in the same session Enabled 
-PS C:\programdata> cat C:\Users\Administrator\Desktop\root.txt
-771319541e11a4ae9868006ecbae6fb9
+PS C:\programdata> cat C:\Users\Administrator\Desktop\privileged-proof.txt
 ```
 
 ---

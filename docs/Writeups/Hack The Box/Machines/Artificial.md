@@ -1,7 +1,7 @@
 ---
 title: Artificial
 slug: Artificial
-tags: [Linux, Tensorflow, Backrest, Vulnerability Research]
+tags: [Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -194,9 +194,8 @@ gael@artificial.htb password: mattp005numbertwo
 
 Last login: Sun Jun 22 05:30:41 2025 from 10.10.14.42
 gael@artificial:~$ ls
-user.txt
-gael@artificial:~$ cat user.txt
-457342bed98e2b8f580e44fff9eb4318
+local-proof.txt
+gael@artificial:~$ cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -360,7 +359,7 @@ We can use `ls <snapshot-id>` to list content of `/root` directory. As we can se
 
 ![](/img/htb-machines/backrest6.png)
 
-Now just simply dump the `root.txt` from `/root` using command `dump <snapshot-id> /root/root.txt`.
+Now just simply dump the `privileged-proof.txt` from `/root` using command `dump <snapshot-id> /root/privileged-proof.txt`.
 
 ![](/img/htb-machines/backrest7.png)
 # Pwn3d!

